@@ -13,7 +13,6 @@ import {ActivatedRoute} from "@angular/router";
 })
 export class SaveArticleComponent implements OnInit{
   article: Article = new Article()
-  fullName: string[] = []
   searchList: Person[] = []
   filteredList: Person[] = []
   constructor(private as: ArticleService, private ps: PersonService, private route: ActivatedRoute) {}
@@ -23,14 +22,12 @@ export class SaveArticleComponent implements OnInit{
     const id = parseInt(this.route.snapshot.paramMap.get('id')!);
     if (id) {
       await this.as.get(id).then(data => this.article = data!)
-      this.fullName = this.article.authors!.map(p => p.firstName + ' ' + p.lastName)
     }
     this.addAuthor()
     await this.ps.getStatus(true).then(data => {this.searchList = data!/*.filter(r => !this.article.authors!.some(a => a.id === r.id)); console.log(this.searchList)*/})
   }
 
     addAuthor() {
-      this.fullName.push('')
       if (!this.article.authors)
         this.article.authors = []
       this.article.authors.push(new Person())
@@ -40,7 +37,6 @@ export class SaveArticleComponent implements OnInit{
 
     removeAuthor() {
         let index = this.article.authors!.length - 1
-        this.fullName.splice(index, 1)
         let person = this.article.authors!.splice(index, 1)
       this.searchList.push(person[0])
     }
@@ -49,7 +45,7 @@ export class SaveArticleComponent implements OnInit{
   {
     let article = addF.value
     article.id = this.article.id
-    article.authors = this.article.authors!.map(r=> ({id: r.id || null, firstName: r.firstName, lastName: r.lastName}))
+    article.authors = this.article.authors!.map(r=> ({id: r.id || null, fullName: r.fullName}))
     //article.authors.push(this.ps.getItem('person').id)
     console.log(article)
     this.as.save(article)
@@ -57,18 +53,16 @@ export class SaveArticleComponent implements OnInit{
 
   searchAuthor(i: number)
   {
-    if (this.fullName[i]=='')
+    if (!this.article.authors![i].fullName)
       this.filteredList = []
     this.filteredList = this.searchList.filter(person =>
-      (person.firstName?.toLowerCase().includes(this.fullName[i].toLowerCase()) ||
-      person.lastName?.toLowerCase().includes(this.fullName[i].toLowerCase()))
+      (person.fullName?.toLowerCase().includes(this.article.authors![i].fullName!.toLowerCase()))
     )
   }
 
   selectPerson(person: Person)
   {
       this.article.authors![this.article.authors!.length - 1] = person
-      this.fullName[this.article.authors!.length - 1] = person.firstName+' '+person.lastName
       this.searchList = this.searchList.filter(r => r!=person)
   }
 

@@ -43,7 +43,10 @@
     <table class="table">
       <tr>
         <th>{{content.authors}}</th>
-        <td *ngFor="let a of article.authors"><a routerLink="/profile/{{a.id}}" target="_blank">{{a.firstName}} {{a.lastName}}</a></td>
+        <td *ngFor="let a of article.authors">
+          <a *ngIf="!a.coAuthor" routerLink="/profile/{{a.id}}" target="_blank">{{a.fullName}}</a>
+          <p *ngIf="a.coAuthor">{{a.fullName}}</p>
+        </td>
       </tr>
       <tr>
         <th>Type</th>

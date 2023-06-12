@@ -4,8 +4,7 @@ import {Theme} from "./Theme";
 export class Person
 {
   id?: number
-  firstName?: string
-  lastName?: string
+  fullName?: string
   email?: string
   password?: string
   profession?: string

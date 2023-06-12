@@ -34,9 +34,7 @@
   <div class="cont unput-box" >
     <form #updateF='ngForm' (ngSubmit)="update()">
         <label> {{content.firstName}} </label>
-        <input type="text" name="firstName" placeholder="  your first name ..." [(ngModel)]="person.firstName">
-        <label> {{content.lastName}} </label>
-        <input type="text" name="lastName" placeholder="  your last name ..." [(ngModel)]="person.lastName">
+        <input type="text" name="fullName" placeholder="  your first name ..." [(ngModel)]="person.fullName">
         <label> Email </label>
         <input type="email" name="email" placeholder="  add your e-mail ..." [(ngModel)]="person.email">
         <label> Phone </label>

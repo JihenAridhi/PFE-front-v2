@@ -6,10 +6,8 @@
       <form #addF='ngForm' (ngSubmit)="addPerson(addF)" ngNativeValidate>
         <div id="partA" #partA>
           <label class="ps"> champ obligatoire * </label>
-          <label> First Name <span>*</span> </label>
-          <input type="text" name="firstName" placeholder="  your first name ..." ngModel required>
-          <label> Last Name <span>*</span> </label>
-          <input type="text" name="lastName" placeholder="  your last name ..." ngModel required>
+          <label> Full Name <span>*</span> </label>
+          <input type="text" name="fullName" placeholder="  your Full name ..." ngModel required>
           <label> email <span>*</span> </label>
           <input type="email" name="email" placeholder="  your e-mail ..." ngModel required>
           <label> Password <span>*</span> </label>

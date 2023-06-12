@@ -18,7 +18,7 @@
       </thead>
       <tbody>
         <tr *ngFor="let m of members; let i = index;">
-          <td><a routerLink="#" (click)="toggle(m)">{{m.firstName}} {{m.lastName}}</a></td>
+          <td><a routerLink="#" (click)="toggle(m)">{{m.fullName}}</a></td>
           <td><a class="btn2" (click)="delete(m)">DELETE</a></td>
           <td><select name="profession_{{i}}" class="teams" [(ngModel)]="m.profession">
             <option value="">--</option>
@@ -53,7 +53,7 @@
     <img [src]="member.photo">
 
     <div>
-      <p> name : {{member.firstName}} {{member.lastName}}</p>
+      <p> name : {{member.fullName}}</p>
       <p>email : {{member.email}}</p>
       <p>profession : {{member.profession}}</p>
       <p>teams : {{member.team}}</p>

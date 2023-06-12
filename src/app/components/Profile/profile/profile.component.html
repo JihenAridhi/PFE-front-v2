@@ -10,7 +10,7 @@
     </div>
     <div class="right">
       <div class="content2">
-        <h2>{{person.firstName}} {{person.lastName}}</h2> <br>
+        <h2>{{person.fullName}}</h2> <br>
         <p style="margin:0;">{{person.bio}}</p>
         <a *ngIf="cvExisits" href="assets/CV/{{person.id}}.pdf" download>CV</a>
         <p><i><b>email:</b> {{person.email}}<br>

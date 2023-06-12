@@ -82,6 +82,6 @@ export class MembersComponent implements OnInit{
     if (searchText=='')
       this.filteredList = this.members
     else
-      this.filteredList = this.members.filter(member => member.firstName?.toUpperCase().includes(searchText.toUpperCase()) && member.lastName?.toUpperCase().includes(searchText.toUpperCase()))
+      this.filteredList = this.members.filter(member => member.fullName?.toUpperCase().includes(searchText.toUpperCase()))
   }
 }

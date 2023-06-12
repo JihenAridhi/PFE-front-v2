@@ -10,7 +10,7 @@
 
     <tbody>
     <tr *ngFor="let r of requests">
-      <td>{{r.firstName}} {{r.lastName}}</td>
+      <td>{{r.fullName}}</td>
       <td>{{r.email}}</td>
       <td><button class="btn2" (click)="accept(r)">ACCEPT</button></td>
       <td><button class="btn2" (click)="delete(r)">{{content.delete}}</button></td>
