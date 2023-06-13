@@ -1,1 +1,75 @@
-<p>about works!</p>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" />
+<!-- Font Awesome CDN-->
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+/>
+<!-- Google Font -->
+<link
+  href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap"
+  rel="stylesheet"
+/>
+<body>
+<section id="about-section">
+  <!-- about left  -->
+  <div class="about-left">
+    <img src="data:image/png;base64,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" alt="About Img"/>
+  </div>
+
+  <!-- about right  -->
+  <div class="about-right" >
+    <h1>SMARTLAB</h1>
+    <p>Le programme de recherche du SMART Lab consiste à explorer, adapter, s’inspirer et proposer des solutions intelligentes
+      pour des problématiques du monde réel en développant des techniques/méthodes/modèles, des algorithmes, des approches et
+      méthodologies d’analyse. Les solutions proposées dans un cadre d’aide à la décision dans un environnent de systèmes complexes,
+      humains ou artificiels, seront dérivés essentiellement de la modélisation statistique, de la simulation et science de données,
+      de la modélisation mathématiques et techniques d’optimisation de problèmes combinatoires ou NP-Hard et de l’intelligence artificielle
+      (SMA, Méta-heuristiques, EMO, etc.).
+    </p>
+  </div>
+</section>
+
+<section>
+  <div class="row">
+    <h2 class="section-heading">Our Services</h2>
+  </div>
+  <div class="row" >
+    <div class="column" *ngFor="let info of infos">
+      <div class="card">
+        <div class="icon-wrapper">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </div>
+        <h3>{{ info.name }}</h3>
+        <p>
+          {{ info.description }}
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="about-section">
+  <!-- about left  -->
+  <div class="about-left">
+    <img src="/assets/eventPhoto/Screenshot 2023-06-12 172338.jpg" alt="About Img"/>
+  </div>
+
+  <!-- about right  -->
+  <div class="about-right" >
+    <h1>PRESENTATION DES PROJETS DE RECHERCHE DU LR</h1>
+    <p>
+      <b>SMART Lab</b> : Strategies for Modeling & ARtificial inTelligence Laboratory (Directeur : Dr. Lamjed BEN SAID, PROF)<br>
+      <b>Research Unit 1</b> : SMART Optimization for Decision Making (ODM)<br>
+      <b>Research Unit 2</b> : SMART Computing for Pervasive Environment (CPE)<br>
+      <b>Project P1</b> : SMART-Optimization (Project team leader : Dr. Slim BECHIKH, MC)<br>
+      <b>Project P3</b> : SMART-DecisionMaking (Project team leader : Dr. Lamjed BEN SAID, PROF)<br>
+      <b>Project P2</b> : SMART-Computing (Project team leader : Dr. Mohamed Salah GOUIDER, MC)<br>
+      <b>Project P4</b> : SMART-PervasiveEnvironment (Project team leader : Dr. Said GATTOUFI, PROF)<br>
+      <b>TIS&VV</b> : SMART-Technological & Innovation Survey and Verification & Validation
+      (Group team leader : Dr. Latifa RABAI, MC)
+
+    </p>
+  </div>
+</section>
+
+</body>
