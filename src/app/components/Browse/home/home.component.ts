@@ -25,6 +25,11 @@ export class HomeComponent implements OnInit{
   newsList: News[] = new Array<News>()
   url: string[] = [];
   content: any;
+  presidentData: any;
+  isLoading: boolean = true; // Add a loading indicator flag
+  firstName: string='';
+  lastName: string='';
+  person: any; // Assuming the response type is any for simplicity
 
 
   constructor(private router: Router, private ns: NewsService, private as: ArticleService, private ls: LanguageService, private prt : PartnersService , private prs : PersonService , private es : EventService) {}
@@ -33,6 +38,7 @@ export class HomeComponent implements OnInit{
   {
     this.ls.getLanguage().subscribe(data => this.content=data)
     await this.es.getAll().then(async (data) => { if (data) this.eventList = data;})
+    await this.getPresidentData();
     await this.prs.getAll().then(async (data) => { if (data) this.personList = data;})
     await this.as.getAll().then(async (data) => { if (data) this.articleList = data;})
     await this.prt.getAll().then(async (data) => { if (data) this.partnersList = data;})
@@ -43,6 +49,40 @@ export class HomeComponent implements OnInit{
         this.newsList = data
     })
   }
+  getPresidentData() {
+    this.http.get<any>('http://127.0.0.1:8000/api/president')
+      .subscribe(
+        data => {
+          this.presidentData = data.presidentData; // Access the "footerData" key
+          this.firstName= this.presidentData.presidentfirstname;
+          this.lastName= this.presidentData.presidentlastname;
+          console.log('hi');
+          console.log(this.presidentData);
+          console.log(this.firstName);
+          console.log(this.lastName);
+          this.isLoading = false; // Set the loading indicator flag to false
+          const url = `http://localhost:8000/person/getByFullName/${this.firstName}/${this.lastName}`;
+
+          // Make the request with the constructed URL
+          this.http.get<any>(url)
+            .subscribe(
+              personData => {
+                this.person = personData;
+                console.log('Person Data:', personData);
+                // Handle the person data as needed
+              },
+              error => {
+                console.error('Error fetching person:', error);
+              }
+            );
+        },
+        error => {
+          console.error(error);
+          this.isLoading = false; // Set the loading indicator flag to false even in case of error
+        }
+      );
+  }
+
 
   changeLang(language: string) {
     this.ls.switchTo(language)
