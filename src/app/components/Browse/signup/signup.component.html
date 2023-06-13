@@ -6,17 +6,21 @@
       <form #addF='ngForm' (ngSubmit)="addPerson(addF)" ngNativeValidate>
         <div id="partA" #partA>
           <label class="ps"> champ obligatoire * </label>
-          <label> Full Name <span>*</span> </label>
-          <input type="text" name="fullName" placeholder="  your Full name ..." ngModel required>
-          <label> email <span>*</span> </label>
-          <input type="email" name="email" placeholder="  your e-mail ..." ngModel required>
-          <label> Password <span>*</span> </label>
+          <label> First Name <span>*</span> </label>
+          <input type="text" name="firstName" placeholder="  your first name ..." ngModel required>
+          <label> Last Name <span>*</span> </label>
+          <input type="text" name="lastName" placeholder="  your last name ..." ngModel required>
+          <label> Password  <span>*</span> </label>
+          <label style="font-size: 10px; margin-top:0;"> Password must contain letter and numbers </label>
+          <label style="font-size: 10px; margin-top:0;"> Password must be loger than 8 caracters </label>
           <input type="password" name="password" placeholder="  your password ..." ngModel required>
           <label> Confirm your password <span>*</span> </label>
           <input type="password" placeholder="  Confirm your password ..." name="password1" ngModel required>
           <button class="SBM next-button" type="button" (click)="showPart(partB)">next</button>
         </div>
         <div id="partB" #partB style="display: none;">
+          <label> email <span>*</span> </label>
+          <input type="email" name="email" placeholder="  your e-mail ..." ngModel required>
           <label> Phone <span color="red">*</span> </label>
           <input type="text" name="phone" placeholder="  your phone ..." ngModel>
           <label> Short Bio <span color="red">*</span> </label>
@@ -66,6 +70,12 @@
           <button class="SBM previous-button" type="button" (click)="showPart(partC)">previous</button>
           <input type="submit" name="" value="submit" class="SBM next">
         </div>
+        <!--<div id="partE" #partE>
+          <p>We have sent you an email, please enter the code</p>
+          <input type="text" >
+          <button class="SBM previous-button" type="button">previous</button>
+          <button (click)="confirm()">enter</button>
+        </div>-->
       </form>
     </div>
     <div class="container2" align="center">
