@@ -1,18 +1,64 @@
-.home{
-  position: relative;
-  top: 100px;
-  display: flex;
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body{
+  width: 90%;
+  min-height: 100vh;
+  display: inline-block;
   align-items: center;
   justify-content: center;
-  width: 400px;
-  height: auto;
-  border: #123C60 ;
+  background-color: #f1f1f1;
+  float: right;
 }
-.input_container {
-  position: absolute;
-  top: 260px;
-  width: 160px;
+.about{
+  background: url(https://i.pinimg.com/236x/c0/74/46/c07446568dcc924b42031cb2512f0f5f.jpg) no-repeat left;
+  background-size: 50%;
+  background-color: #fdfdfd;
+  overflow: hidden;
+  padding: 100px 0;
+}
+.inner-section{
+  width: 55%;
+  float: right;
+  background-color: #eeeeee;
+  padding: 140px;
+  box-shadow: 10px 10px 8px rgba(0,0,0,0.3);
+}
+.inner-section h1{
+  margin-bottom: 30px;
+  font-size: 30px;
+  font-weight: 900;
+}
+input, textarea{
+  display: block;
+  margin: 5px 0;
+  width: 240px;
   height: 30px;
+  border : 0.5px solid #EEEEEE;
+  border-radius: 5px;
+  box-shadow: rgba(50, 50, 105, 0.15) 0px 2px 5px 0px, rgba(0, 0, 0, 0.05) 0px 1px 1px 0px;
+}
+
+label {
+  display: block;
+  margin: 0px 0;
+  padding-top:0px ;
+  padding-bottom: 0px;
+}
+.text{
+  font-size: 13px;
+  color: #545454;
+  line-height: 30px;
+  text-align: justify;
+  margin-bottom: 0px;
+}
+
+.input_container {
+  margin:  0;
+  width: 160px;
+  height: 50px;
   max-width: 160px;
   overflow-x: hidden;
 
@@ -33,4 +79,52 @@ input[type=file]::file-selector-button {
 input[type=file]::file-selector-button:hover {
   background-color: #555;
   color: #FFF;
+}
+.skills button{
+  text-align: center;
+  letter-spacing: 2px;
+  margin-right: 20px;
+  transition: .5s;
+  border: 0.5px solid #EEEEEE;
+  border-radius: 5px;
+  box-shadow: rgba(50, 50, 105, 0.15) 0px 2px 5px 0px, rgba(0, 0, 0, 0.05) 0px 1px 1px 0px;
+  width: 160px;
+  height: 30px;
+  max-width: 160px;
+  background-color: #EEEEEE;
+  color: #000;
+  cursor: pointer;
+}
+.skills button:hover{
+  transition: 1s;
+  background-color: #555;
+  color: #FFF;
+}
+@media screen and (max-width:1200px){
+  .inner-section{
+    padding: 80px;
+  }
+}
+@media screen and (max-width:1000px){
+  .about{
+    background-size: 100%;
+    padding: 100px 40px;
+  }
+  .inner-section{
+    width: 100%;
+  }
+}
+
+@media screen and (max-width:600px){
+  .about{
+    padding: 0;
+  }
+  .inner-section{
+    padding: 60px;
+  }
+  .skills button{
+    font-size: 19px;
+    padding: 5px;
+    width: 160px;
+  }
 }
