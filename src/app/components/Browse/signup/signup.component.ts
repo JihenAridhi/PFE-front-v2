@@ -43,23 +43,36 @@ export class SignupComponent implements OnInit  {
     });
   };
 
-  addPerson(addF: NgForm) {
-    if (addF.valid) {
-      if (!addF.value.password)
-        alert('enter your password please !!')
-      else if (addF.value.password != addF.value.password1)
-        alert('confirm password please !!')
-      else {
-        let person: Person = addF.value
-        person.themes = []
-        for (let i = 0; i < 12; i++)
-          if (this.themes[i])
-            person.themes?.push(this.themeList[i])
-        this.ps.add(person, this.selectedFiles)
-      }
+ addPerson(addF: NgForm) {
+    const password = addF.value.password;
+
+    // Check password length
+    if (password.length < 8 && password.length > 0) {
+      alert('Password must be at least 8 characters long!');
+      return;
     }
-    else alert('missing data !!!')
+
+    // Check if password contains both letters and numbers
+    const passwordRegex = /^(?=.*[a-zA-Z])(?=.*\d)/;
+    if (!passwordRegex.test(password) && password.length > 0) {
+      alert('Password must contain both letters and numbers!');
+      return;
+    }
+
+    // Rest of your code...
+    if (addF.value.password != addF.value.password1)
+      alert('Confirm password, please!');
+    else {
+      let person: Person = addF.value
+      person.themes = []
+      for(let i=0; i<12; i++)
+        if(this.themes[i])
+          person.themes?.push(this.themeList[i])
+      //person.password = CryptoJS.AES.encrypt(JSON.stringify(person.password), 'key').toString();
+      this.ps.add(person, this.selectedFiles)
+    }
   }
+
 
   onFileSelected(files: FileList | null) {
     this.selectedFiles = files;
