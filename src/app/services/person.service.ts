@@ -15,6 +15,10 @@ export class PersonService {
 
   public get(id: number)
   {return  this.http.get('http://localhost:8000/person/get/'+id).toPromise()}
+  
+  getPersonByFullName(firstName: string, lastName: string): Observable<any> {
+    return this.http.get<any>(`http://localhost:8000/person/getByFullName/${firstName}/${lastName}`);
+  }
 
   public getAll()
   {return this.http.get<Person[]>('http://localhost:8000/person/getAll').toPromise()/*.subscribe(data=> localStorage.setItem('personList', JSON.stringify(data)))*/}
