@@ -41,9 +41,10 @@ export class EventService
 
   setPhoto(files: any, id: number)
   {
-    const file: File = files[0];
     const formData = new FormData();
-    formData.append('file', file, id.toString()+'.jpg');
-    this.http.post<string>('http://localhost:8000/photo/event', formData).toPromise().then()
+    //files.forEach((file: File) => formData.append('files[]', file))
+    for (let i=0; i<files.length; i++)
+      formData.append('files[]', files[i])
+    this.http.post<string>('http://localhost:8000/photo/event/'+id, formData).toPromise().then()
   }
 }

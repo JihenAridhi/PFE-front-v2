@@ -31,6 +31,6 @@ export class AllComponent implements OnInit{
     if (searchText=='')
       this.filteredList = this.personList
     else
-      this.filteredList = this.personList.filter(person => person.firstName?.toUpperCase().includes(searchText.toUpperCase()) || person.lastName?.toUpperCase().includes(searchText.toUpperCase()))
+      this.filteredList = this.personList.filter(person => person.fullName?.toUpperCase().includes(searchText.toUpperCase()))
   }
 }
