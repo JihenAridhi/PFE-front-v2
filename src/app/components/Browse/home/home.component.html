@@ -52,6 +52,7 @@
           </ul>
 
         </li>
+        <li><a routerLink="/about">{{content.about}}</a><hr color="#587951"></li>
         <li><a routerLink="/contact">{{content.contact}}</a><hr color="#63474D"></li>
       </ul>
     </div>
@@ -100,9 +101,8 @@
     </div>
     <div class="right">
       <div class="content2">
-        <h2 align="center">Administrator </h2> <br>
-        <p id="first"> <i>iLorem ipsum dolor sit amet consectetur adipisicing elit. Modi eveniet, illo obcaecati incidunt enim similique aut temporibus sed eos doloribus? Labore fugiat maxime tempora possimus quibusdam quae velit rerum in doloribus ut inventore hic alias necessitatibus beatae fuga, aliquam culpa deleniti laboriosam reprehenderit enim dolor quod ipsa? Accusantium, libero culpa.</i></p>
-        <p id="second">Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae ducimus perferendis iste inventore laborum dolor alias, voluptate dignissimos nihil, aliquam totam accusantium eum illo dolorem hic explicabo sequi quis recusandae.</p> <br>
+        <h2 align="center">{{ person.firstName }} {{ person.lastName }}</h2> <br>
+        <p id="first"> {{ person.bio }} </p>
         <a routerLink="/profile/36" target="_blank" class="btn1"> {{content.seeMore}} > </a>
 
       </div>
