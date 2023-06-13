@@ -11,6 +11,7 @@ import { Person } from 'src/app/entities/Person';
 import { PersonService } from 'src/app/services/person.service';
 import { Event } from 'src/app/entities/Event';
 import { EventService } from 'src/app/services/event.service';
+import {HttpClient} from "@angular/common/http";
 
 @Component({
   selector: 'app-home',
@@ -32,7 +33,7 @@ export class HomeComponent implements OnInit{
   person: any; // Assuming the response type is any for simplicity
 
 
-  constructor(private router: Router, private ns: NewsService, private as: ArticleService, private ls: LanguageService, private prt : PartnersService , private prs : PersonService , private es : EventService) {}
+  constructor(private http: HttpClient, private router: Router, private ns: NewsService, private as: ArticleService, private ls: LanguageService, private prt : PartnersService , private prs : PersonService , private es : EventService) {}
 
   async ngOnInit()
   {

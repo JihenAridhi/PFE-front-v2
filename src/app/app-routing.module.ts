@@ -36,6 +36,7 @@ import {SaveProjectComponent} from "./components/Projects/save-project/save-proj
 import {ResearchAxisComponent} from "./components/Browse/research-axis/research-axis.component";
 import {EditProjectComponent} from "./components/Projects/edit-project/edit-project.component";
 import {ReportingComponent} from "./components/admin/reporting/reporting.component";
+import {EditWebsiteComponent} from "./components/admin/edit-website/edit-website.component";
 
 
 
@@ -90,6 +91,7 @@ const routes: Routes = [
     {path: 'save-partner/:id', component: SavePartnerComponent},
     {path: 'save-project', component: SaveProjectComponent},
     {path: 'edit-projects', component: EditProjectComponent},
+    {path: 'edit-website', component: EditWebsiteComponent},
     {path: 'reporting', component: ReportingComponent}
   ]},
 ]

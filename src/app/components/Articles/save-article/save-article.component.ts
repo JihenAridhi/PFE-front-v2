@@ -18,12 +18,11 @@ export class SaveArticleComponent implements OnInit{
   constructor(private as: ArticleService, private ps: PersonService, private route: ActivatedRoute) {}
 
   async ngOnInit()  {
-    let person = this.ps.getItem('person')
     const id = parseInt(this.route.snapshot.paramMap.get('id')!);
     if (id) {
       await this.as.get(id).then(data => this.article = data!)
     }
-    this.addAuthor()
+    //this.addAuthor()
     await this.ps.getStatus(true).then(data => {this.searchList = data!/*.filter(r => !this.article.authors!.some(a => a.id === r.id)); console.log(this.searchList)*/})
   }
 
@@ -31,13 +30,10 @@ export class SaveArticleComponent implements OnInit{
       if (!this.article.authors)
         this.article.authors = []
       this.article.authors.push(new Person())
-      /*this.article.authors[this.article.authors.length-1].firstName = ''
-      this.article.authors[this.article.authors.length-1].lastName = ''*/
     }
 
     removeAuthor() {
-        let index = this.article.authors!.length - 1
-        let person = this.article.authors!.splice(index, 1)
+      let person = this.article.authors!.splice(this.article.authors!.length - 1, 1)
       this.searchList.push(person[0])
     }
 

@@ -2,15 +2,11 @@ import { Injectable } from '@angular/core';
 import {News} from "../entities/News";
 import {HttpClient} from "@angular/common/http";
 import {Router} from "@angular/router";
-import {BehaviorSubject} from "rxjs";
-import * as CryptoJS from "crypto-js";
-
 @Injectable({
   providedIn: 'root'
 })
 export class NewsService {
 
-  news = new BehaviorSubject<News>(new News())
   constructor(private http: HttpClient, private router: Router) {}
 
   getAll(){return this.http.get<News[]>('http://localhost:8000/news/getAll').toPromise()}
@@ -39,19 +35,5 @@ export class NewsService {
     const formData = new FormData();
     formData.append('file', file, id.toString()+'.jpg');
     this.http.post<string>('http://localhost:8000/photo/news', formData).toPromise().then()
-  }
-
-  setItem(key: string, value: any) {
-    const encryptedValue = CryptoJS.AES.encrypt(JSON.stringify(value), 'key').toString();
-    localStorage.setItem(key, encryptedValue);
-  }
-
-  getItem(key: string): any {
-    const encryptedValue = localStorage.getItem(key);
-    if (encryptedValue) {
-      const decryptedValue = CryptoJS.AES.decrypt(encryptedValue, 'key').toString(CryptoJS.enc.Utf8);
-      return JSON.parse(decryptedValue);
-    }
-    return null;
   }
 }

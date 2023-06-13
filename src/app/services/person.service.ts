@@ -5,6 +5,7 @@ import {Person} from "../entities/Person";
 import {AutorisationService} from "./autorisation.service";
 import {Autorisation} from "../entities/Autorisation";
 import * as CryptoJS from 'crypto-js';
+import {Observable} from "rxjs";
 
 
 @Injectable({
@@ -15,7 +16,7 @@ export class PersonService {
 
   public get(id: number)
   {return  this.http.get('http://localhost:8000/person/get/'+id).toPromise()}
-  
+
   getPersonByFullName(firstName: string, lastName: string): Observable<any> {
     return this.http.get<any>(`http://localhost:8000/person/getByFullName/${firstName}/${lastName}`);
   }
