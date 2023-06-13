@@ -1,0 +1,167 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: poppins;
+}
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+section {
+  height: 100vh;
+  width: 100%;
+  display: grid;
+  place-items: center;
+
+}
+.row {
+  display: flex;
+  flex-wrap: wrap;
+}
+.column {
+  width: 100%;
+  padding: 0 1em 1em 1em;
+  text-align: center;
+}
+.card {
+  width: 100%;
+  height: 100%;
+  padding: 2em 1.5em;
+  background: linear-gradient(#ffffff 50%, #0D89BF 50%);
+  background-size: 100% 200%;
+  background-position: 0 2.5%;
+  border-radius: 5px;
+  box-shadow: 0 0 35px rgba(0, 0, 0, 0.12);
+  cursor: pointer;
+  transition: 0.5s;
+}
+h3 {
+  font-size: 20px;
+  font-weight: 600;
+  color: #1f194c;
+  margin: 1em 0;
+}
+p {
+  color: #575a7b;
+  font-size: 15px;
+  line-height: 1.6;
+  letter-spacing: 0.03em;
+}
+.icon-wrapper {
+  background-color: #0D89BF;
+  position: relative;
+  margin: auto;
+  font-size: 30px;
+  height: 2.5em;
+  width: 2.5em;
+  color: #ffffff;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  transition: 0.5s;
+}
+.card:hover {
+  background-position: 0 100%;
+}
+.card:hover .icon-wrapper {
+  background-color: #ffffff;
+  color: #0D89BF;
+}
+.card:hover h3 {
+  color: #ffffff;
+}
+.card:hover p {
+  color: #0D89BF;
+}
+@media screen and (min-width: 768px) {
+  section {
+    padding: 0 2em;
+  }
+  .column {
+    flex: 0 50%;
+    max-width: 50%;
+  }
+}
+@media screen and (min-width: 992px) {
+  section {
+    padding: 1em 3em;
+  }
+  .column {
+    flex: 0 0 33.33%;
+    max-width: 33.33%;
+  }
+}
+#about-section {
+  width: 90%;
+  height: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 40px 12% 80px;
+  background: #ffffff;
+  margin: 0px auto 40px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+.about-left img{
+  width: 420px;
+  height: auto;
+  transform: translateY(50px);
+}
+.about-right {
+  width: 54%;
+}
+
+.about-right ul li {
+  display: flex;
+  align-items: center;
+}
+
+.about-right h1 {
+  color: #0D89BF;
+  font-size: 37px;
+  margin-bottom: 5px;
+}
+
+.about-right p {
+  color: #444;
+  line-height: 26px;
+  font-size: 15px;
+}
+
+.about-right .address {
+  margin: 25px 0;
+}
+
+.about-right .address ul li {
+  margin-bottom: 5px;
+}
+
+.address .address-logo {
+  margin-right: 15px;
+  color: #0D89BF;
+}
+
+.address .saprater {
+  margin: 0 35px;
+}
+
+.about-right .expertise ul {
+  width: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.expertise h3 {
+  margin-bottom: 10px;
+}
+
+.expertise .expertise-logo {
+  font-size: 19px;
+  margin-right: 10px;
+  color: #0D89BF;
+}
