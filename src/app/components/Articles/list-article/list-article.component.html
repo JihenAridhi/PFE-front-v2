@@ -26,10 +26,12 @@
       </tr>
     <tr>
         <div class="news" (click)="toggle(a)">
-          <h4>{{a.title}}</h4>
+           <div *ngFor="let article of a.authors" style="display: inline-flex;"><a style="padding: 0px 0px;" routerLink="/profile/{{article.id}}" target="_blank">{{article.firstName}} {{article.lastName}} &nbsp;&nbsp;&nbsp;</a></div>
           <p class="date">{{a.year}}</p>
-          <p>{{a.type}}</p>
+          <p style="font-size: 18px">{{a.title}}</p>
+          <p class="desc"> {{a.type}}: {{a.name}}</p>
           <p class="desc">{{a.description | slice:0:100}} . . .</p>
+          <a (click)="a.bibtex && openNewTab(a.bibtex)">Bibtex</a>
           <br>
         </div>
     </tr>
