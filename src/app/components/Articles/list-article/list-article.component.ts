@@ -45,4 +45,8 @@ export class ListArticleComponent implements OnInit{
     else
       this.filteredList = this.articles.filter(article => article.year!.toString().includes(year) && article.title!.toUpperCase().includes(searchText.toUpperCase()))
   }
+  openNewTab(bibtex: string) {
+    const newWindow = window.open('', '_blank');
+    newWindow!.document.write(`<html><body><pre>${bibtex}</pre></body></html>`);
+  }
 }
