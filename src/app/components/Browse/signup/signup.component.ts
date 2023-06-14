@@ -28,6 +28,7 @@ export class SignupComponent implements OnInit  {
       this.parts.push(document.getElementById('partB')!);
       this.parts.push(document.getElementById('partC')!);
       this.parts.push(document.getElementById('partD')!);
+      this.parts.push(document.getElementById('partE')!);
     });
     this.showPart(this.parts[0])
   }
