@@ -67,7 +67,14 @@
               </div>
             </label>
           </div>
-          <button class="SBM previous-button" type="button" (click)="showPart(partC)">previous</button>
+         <button class="SBM previous-button" type="button" (click)="showPart(partC)">previous</button>
+          <button class="SBM next-button next" type="button" (click)="showPart(partE)">next</button>
+        </div>
+        <div id="partE" #partE style="display: none;">
+          <label> We have sent you an email,</label>
+          <label> please enter the code </label>
+          <input type="text"  placeholder="  your code ..." ngModel required>
+          <button class="SBM previous-button" type="button" (click)="showPart(partD)">previous</button>
           <input type="submit" name="" value="submit" class="SBM next">
         </div>
         <!--<div id="partE" #partE>
