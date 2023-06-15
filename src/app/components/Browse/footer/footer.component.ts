@@ -8,18 +8,26 @@ import {HttpClient} from "@angular/common/http";
   styleUrls: ['./footer.component.css']
 })
 export class FooterComponent implements OnInit{
-
-  infos!: any[];
-  content: any;
+  footerData: any;
+  isLoading: boolean = true; // Add a loading indicator flag
   ngOnInit() {
-    this.fetchInfoData();
+    this.getFooterData();
   }
 
-  constructor(private ls: LanguageService, private http: HttpClient) {ls.getLanguage().subscribe(data => this.content=data)}
-  private fetchInfoData() {
-    this.http.get<any[]>('/assets/BrowseInfo/footer.json').subscribe(data => {
-      this.infos = data;
-    });
+  constructor( private http: HttpClient) {}
+  getFooterData() {
+    this.http.get<any>('http://127.0.0.1:8000/api/footer')
+      .subscribe(
+        data => {
+          this.footerData = data.footerData; // Access the "footerData" key
+          console.log(this.footerData);
+          this.isLoading = false; // Set the loading indicator flag to false
+        },
+        error => {
+          console.error(error);
+          this.isLoading = false; // Set the loading indicator flag to false even in case of error
+        }
+      );
   }
 
 }
