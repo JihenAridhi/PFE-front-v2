@@ -71,6 +71,7 @@ export class SignupComponent implements OnInit  {
           person.themes?.push(this.themeList[i])
       //person.password = CryptoJS.AES.encrypt(JSON.stringify(person.password), 'key').toString();
       this.ps.add(person, this.selectedFiles)
+      this.showPart(this.parts[4])
     }
   }
 

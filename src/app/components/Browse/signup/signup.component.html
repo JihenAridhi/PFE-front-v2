@@ -3,24 +3,22 @@
   <div class="wrapper">
     <div class="container">
       <h1>General Information</h1>
-      <form #addF='ngForm' (ngSubmit)="addPerson(addF)" ngNativeValidate>
+      <form #addF='ngForm' ngNativeValidate>
         <div id="partA" #partA>
           <label class="ps"> champ obligatoire * </label>
-          <label> First Name <span>*</span> </label>
-          <input type="text" name="firstName" placeholder="  your first name ..." ngModel required>
-          <label> Last Name <span>*</span> </label>
-          <input type="text" name="lastName" placeholder="  your last name ..." ngModel required>
+          <label> Full Name <span>*</span> </label>
+          <input type="text" name="fullName" placeholder="  your full name ..." ngModel required>
+          <label> email <span>*</span> </label>
+          <input type="email" name="email" placeholder="  your e-mail ..." ngModel required>
           <label> Password  <span>*</span> </label>
           <label style="font-size: 10px; margin-top:0;"> Password must contain letter and numbers </label>
           <label style="font-size: 10px; margin-top:0;"> Password must be loger than 8 caracters </label>
           <input type="password" name="password" placeholder="  your password ..." ngModel required>
           <label> Confirm your password <span>*</span> </label>
           <input type="password" placeholder="  Confirm your password ..." name="password1" ngModel required>
-          <button class="SBM next-button" type="button" (click)="showPart(partB)">next</button>
+          <button class="SBM next-button" (click)="showPart(partB)">next</button>
         </div>
         <div id="partB" #partB style="display: none;">
-          <label> email <span>*</span> </label>
-          <input type="email" name="email" placeholder="  your e-mail ..." ngModel required>
           <label> Phone <span color="red">*</span> </label>
           <input type="text" name="phone" placeholder="  your phone ..." ngModel>
           <label> Short Bio <span color="red">*</span> </label>
@@ -31,7 +29,7 @@
           </div>
           <div style="display: block;">
             <button class="SBM previous-button" type="button"  (click)="showPart(partA)">previous</button>
-            <button class="SBM next-button next" type="button" (click)="showPart(partC)">next</button>
+            <button class="SBM next-button next" (click)="showPart(partC)">next</button>
           </div>
         </div>
         <div id="partC" #partC style="display: none;">
@@ -55,7 +53,7 @@
             <input type="text" name="dblp" placeholder="  your DBLP's url ..." ngModel>
           </div>
           <button class="SBM previous-button" type="button" (click)="showPart(partB)">previous</button>
-          <button class="SBM next-button next" type="button" (click)="showPart(partD)">next</button>
+          <button class="SBM next-button next" (click)="showPart(partD)">next</button>
         </div>
         <div id="partD" #partD style="display: none;">
           <div class="cont">
@@ -68,7 +66,7 @@
             </label>
           </div>
          <button class="SBM previous-button" type="button" (click)="showPart(partC)">previous</button>
-          <button class="SBM next-button next" type="button" (click)="showPart(partE)">next</button>
+          <button class="SBM next-button next" (click)="addPerson(addF)">next</button>
         </div>
         <div id="partE" #partE style="display: none;">
           <label> We have sent you an email,</label>
