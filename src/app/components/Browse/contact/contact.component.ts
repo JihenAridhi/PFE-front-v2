@@ -10,19 +10,30 @@ import {HttpClient} from "@angular/common/http";
   styleUrls: ['./contact.component.css']
 })
 export class ContactComponent implements OnInit {
-  infos!: any[];
+  footerData: any;
+  isLoading: boolean = true; // Add a loading indicator flag
   content: any;
   ngOnInit() {
-    this.fetchInfoData();
+    this.getFooterData();
   }
 
-  constructor(private fs: FeedbackService, private ls: LanguageService, private http: HttpClient) {this.ls.getLanguage().subscribe(data => this.content = data)}
+  constructor(private fs: FeedbackService, private http: HttpClient) {}
   add(contactF: NgForm) {
     this.fs.add(contactF.value)
   }
-  private fetchInfoData() {
-    this.http.get<any[]>('/assets/BrowseInfo/footer.json').subscribe(data => {
-      this.infos = data;
-    });
+  getFooterData() {
+    this.http.get<any>('http://127.0.0.1:8000/api/footer')
+      .subscribe(
+        data => {
+          this.footerData = data.footerData; // Access the "footerData" key
+          console.log('hiiiiiiiiii');
+          console.log(this.footerData);
+          this.isLoading = false; // Set the loading indicator flag to false
+        },
+        error => {
+          console.error(error);
+          this.isLoading = false; // Set the loading indicator flag to false even in case of error
+        }
+      );
   }
 }
