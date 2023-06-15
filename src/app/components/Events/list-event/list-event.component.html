@@ -20,9 +20,9 @@
 </div>
 <div class="container1">
   <a class="item-container" *ngFor="let e of filteredList" routerLink="/view-event/{{e.id}}" target="_blank">
-    <div class="img-container">
+    <!--<div class="img-container">
       <img [src]="e.photo" alt="Event image">
-    </div>
+    </div>-->
     <div class="body-container">
       <div class="overlay"></div>
 
@@ -39,9 +39,9 @@
           </p>
           <p class="info">
             <i class="far fa-calendar-alt"></i>
-            {{e.date}}
+            {{e.date | date: 'dd-MM-yyyy'}}
           </p>
-          <p class="info description">{{e.description | slice:0:10}}<span>more...</span></p>
+          <p class="info description">{{e.description | slice:0:20}}<span>more...</span></p>
         </div>
       </div>
     </div>

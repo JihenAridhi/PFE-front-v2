@@ -12,20 +12,18 @@ import {PartnersService} from "../../../services/partners.service";
 export class SavePartnerComponent implements OnInit{
 
   partner: Partner = new Partner()
+  private selectedFiles: any;
   constructor(private ps: PartnersService,private route: ActivatedRoute) {
   }
 
   add(addF: NgForm) {
     let p = addF.value
     p.id = this.partner.id
-    this.ps.save(p)
+    this.ps.save(p, this.selectedFiles)
   }
 
-  async onFileSelected(files: any) {
-    const file: File = files[0];
-    const formData = new FormData();
-    formData.append('file', file, this.partner.id?.toString()+'.jpg');
-    await this.ps.setPhoto(formData).then()
+  onFileSelected(files: FileList | null) {
+    this.selectedFiles = files;
   }
 
   async ngOnInit() {

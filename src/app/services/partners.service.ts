@@ -14,21 +14,26 @@ export class PartnersService {
 
   get(id: number) {return this.http.get('http://localhost:8000/partner/get/'+id).toPromise()}
 
-  setPhoto(formData: FormData)
-  {return this.http.post<string>('http://localhost:8000/photo/partner', formData).toPromise()}
-
-  getPhoto(id?: number)
+  setPhoto(files: any, id: number)
   {
-    return this.http.get<string>('http://localhost:8000/photo/partner/get/'+id).toPromise()
+    const file: File = files[0];
+    const formData = new FormData();
+    formData.append('file', file, id.toString()+'.jpg');
+    this.http.post<string>('http://localhost:8000/photo/partner', formData).toPromise().then()
   }
 
-  save(partner: Partner)
+  save(partner: Partner, files: any)
   {
-    console.log(partner.id)
-    if(!partner.id)
-      this.http.post('http://localhost:8000/partner/add', partner).subscribe(()=> alert('news have been posted successfully !! '))
+    if(partner.id)
+      this.http.put('http://localhost:8000/partner/update', partner).subscribe(()=> {
+        this.setPhoto(files, partner.id!)
+        alert('changes have been affected successfully !!')
+      })
     else
-      this.http.put('http://localhost:8000/partner/update', partner).subscribe(()=> alert('changes have been affected successfully !!'))
+      this.http.post<number>('http://localhost:8000/partner/add', partner).subscribe((data)=> {
+        this.setPhoto(files, data)
+        alert('partner have been posted successfully !! ')
+      })
   }
 
   delete(id: number | undefined) {this.http.delete('http://localhost:8000/partner/delete/'+id).subscribe()}

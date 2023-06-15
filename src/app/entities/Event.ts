@@ -6,6 +6,6 @@ export class Event
   organiser?: string
   location?: string
   coming?: number
-  photo?: string
+  photos?: string[]
   description?: string
 }

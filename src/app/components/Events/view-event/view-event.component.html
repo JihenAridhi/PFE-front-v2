@@ -1,10 +1,12 @@
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+
 <div id="container0">
   <div id="container">
     <div id="title"><h1 style="text-align: center">{{event.title}}</h1></div>
     <div id="info" >
       <div id="date">
-        <h3>Date & Time: </h3>
-        <p>{{event.date | date: 'dd-MM-yyyy'}}<br>10:00 AM</p>
+        <h3>Date : </h3>
+        <p>{{event.date | date: 'dd-MM-yyyy'}}</p>
       </div>
       <div id="location">
         <h3>{{content.location}}: </h3>
@@ -16,16 +18,19 @@
       </div>
     </div>
     <div id="#content">
-      <img [src]="event.photo" style="max-height: 250px; border-radius: 25px; padding: 10px">
       <div id="description">{{event.description}}</div>
+    </div><br>
+    <!--<ul align="center">
+      <li *ngFor="let photo of event.photos; let i = index">
+        <div align="center"><img [src]="photo" id="photo_{{i}}"></div>
+        <a *ngIf="i!=0" href="#photo_{{i-1}}"><</a>
+        <a *ngIf="i!=event.photos!.length-1" href="#photo_{{i+1}}">></a>
+      </li>
+    </ul>-->
+    <div class="content1">
+      <img *ngFor="let photo of event.photos" [src]="photo" alt="">
     </div>
   </div>
-  <div class="content1">
-    <img src="https://i.pinimg.com/236x/1c/84/3d/1c843dfa7398035fdee1f9c02f1fe714.jpg" alt="">
-    <img src="https://i.pinimg.com/236x/1c/84/3d/1c843dfa7398035fdee1f9c02f1fe714.jpg" alt="">
-    <img src="https://i.pinimg.com/236x/1c/84/3d/1c843dfa7398035fdee1f9c02f1fe714.jpg" alt="">
-    <img src="https://i.pinimg.com/236x/1c/84/3d/1c843dfa7398035fdee1f9c02f1fe714.jpg" alt="">
-    <img src="https://i.pinimg.com/236x/1c/84/3d/1c843dfa7398035fdee1f9c02f1fe714.jpg" alt="">
-  </div>
+
 </div>
 

@@ -49,6 +49,14 @@ button
   #container div div{width: 93%}
   #content{flex-wrap: wrap}
 }
+
+
+/*
+
+li{list-style: none}
+img{height: 350px}
+*/
+
 .content1{
   display: flex;
   max-width: 1200px;
@@ -59,8 +67,8 @@ button
   margin-bottom: 20px;
 }
 .content1 img{
-  width: 250px;
-  height: 150px;
+  width: 400px;
+  height: auto;
   object-fit: cover;
   object-position: bottom;
   padding: 5px;
