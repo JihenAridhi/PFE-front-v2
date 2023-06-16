@@ -127,11 +127,16 @@ export class PersonService {
   }
 
   register(person: Person, verify: string, files: any) {
-    this.http.post<number>('http://localhost:8000/person/add', person).subscribe((id: number)=> {
-      alert("Your request have been submitted, please wait for further confirmation.")
-      for(let i=0; i<person.themes!.length; i++)
-        this.http.post('http://localhost:8000/person/'+id+'/addTheme/'+person.themes![i].id, null).subscribe();
-      this.setCV(files, id!)
-    })
+    if (verify!=this.code?.toString())
+      alert('code incorrect !!')
+    else {
+      this.http.post<number>('http://localhost:8000/person/add', person).subscribe((id: number) => {
+        alert("Your request have been submitted, please wait for further confirmation.")
+        for (let i = 0; i < person.themes!.length; i++)
+          this.http.post('http://localhost:8000/person/' + id + '/addTheme/' + person.themes![i].id, null).subscribe();
+        this.setCV(files, id!)
+      })
+      this.router.navigate(['/home']);
+    }
   }
 }
