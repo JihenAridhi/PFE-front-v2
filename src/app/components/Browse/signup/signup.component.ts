@@ -70,8 +70,9 @@ export class SignupComponent implements OnInit  {
         if(this.themes[i])
           person.themes?.push(this.themeList[i])
       //person.password = CryptoJS.AES.encrypt(JSON.stringify(person.password), 'key').toString();
-      this.ps.add(person, this.selectedFiles)
+      this.ps.add(person)
       this.showPart(this.parts[4])
+
     }
   }
 
@@ -80,4 +81,8 @@ export class SignupComponent implements OnInit  {
     this.selectedFiles = files;
   }
 
+  confirm(addF: NgForm) {
+      let verify = addF.value.code
+      this.ps.register(addF.value, verify, this.selectedFiles)
+  }
 }

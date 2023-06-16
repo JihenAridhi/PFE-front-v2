@@ -71,16 +71,10 @@
         <div id="partE" #partE style="display: none;">
           <label> We have sent you an email,</label>
           <label> please enter the code </label>
-          <input type="text"  placeholder="  your code ..." ngModel required>
+          <input type="text" name="code"  placeholder="  your code ..." ngModel required>
           <button class="SBM previous-button" type="button" (click)="showPart(partD)">previous</button>
-          <input type="submit" name="" value="submit" class="SBM next">
+          <input type="submit" name="" value="submit" (click)="confirm(addF)" class="SBM next">
         </div>
-        <!--<div id="partE" #partE>
-          <p>We have sent you an email, please enter the code</p>
-          <input type="text" >
-          <button class="SBM previous-button" type="button">previous</button>
-          <button (click)="confirm()">enter</button>
-        </div>-->
       </form>
     </div>
     <div class="container2" align="center">

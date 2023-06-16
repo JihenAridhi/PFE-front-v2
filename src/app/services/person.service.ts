@@ -12,6 +12,7 @@ import {Observable} from "rxjs";
   providedIn: 'root'
 })
 export class PersonService {
+  code?: number
   constructor(private http: HttpClient, private router: Router, private as: AutorisationService) { }
 
   public get(id: number)
@@ -24,7 +25,7 @@ export class PersonService {
   public getAll()
   {return this.http.get<Person[]>('http://localhost:8000/person/getAll').toPromise()/*.subscribe(data=> localStorage.setItem('personList', JSON.stringify(data)))*/}
 
-  public add(person: Person, files: any)
+  public add(person: Person)
   {
     this.http.get('http://127.0.0.1:8000/person/getEmail/'+person.email).subscribe(
       (data)=>
@@ -32,22 +33,12 @@ export class PersonService {
         if(data)
           alert('this email is already in use !!')
         else {
-          let code = Math.floor(Math.random()*1000000)
+          this.code = Math.floor(Math.random()*1000000)
           let email: any = {}
           email.subject = 'Confirm Your SMARTLAB Account Creation'
-          email.html = `You have requested an account Creation for SMARTLAB. Your confirmation code is `+code;
+          email.html = `You have requested an account Creation for SMARTLAB. Your confirmation code is `+this.code;
           email.to = person.email
-          this.http.post('http://localhost:8000/person/sendMail', email).subscribe(() => {
-            let verify = ''
-            while (verify!=code.toString())
-              verify = window.prompt("enter the code")!
-            this.http.post<number>('http://localhost:8000/person/add', person).subscribe((id: number)=> {
-              alert("Your request have been submitted, please wait for further confirmation.")
-              for(let i=0; i<person.themes!.length; i++)
-                this.http.post('http://localhost:8000/person/'+id+'/addTheme/'+person.themes![i].id, null).subscribe();
-              this.setCV(files, id!)
-            })
-          })
+          this.http.post('http://localhost:8000/person/sendMail', email).subscribe()
         }
       }
     )
@@ -133,5 +124,14 @@ export class PersonService {
     const formData = new FormData();
     formData.append('file', file, id.toString()+'.pdf');
     this.http.post<string>('http://localhost:8000/cv', formData).toPromise().then()
+  }
+
+  register(person: Person, verify: string, files: any) {
+    this.http.post<number>('http://localhost:8000/person/add', person).subscribe((id: number)=> {
+      alert("Your request have been submitted, please wait for further confirmation.")
+      for(let i=0; i<person.themes!.length; i++)
+        this.http.post('http://localhost:8000/person/'+id+'/addTheme/'+person.themes![i].id, null).subscribe();
+      this.setCV(files, id!)
+    })
   }
 }
