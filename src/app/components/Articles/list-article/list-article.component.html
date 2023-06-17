@@ -26,7 +26,10 @@
       </tr>
     <tr>
         <div class="news" (click)="toggle(a)">
-           <div *ngFor="let article of a.authors" style="display: inline-flex;"><a style="padding: 0px 0px;" routerLink="/profile/{{article.id}}" target="_blank">{{article.fullName}} &nbsp;&nbsp;&nbsp;</a></div>
+           <div *ngFor="let article of a.authors" style="display: inline-flex;">
+             <a *ngIf="article.status" style="padding: 0px 0px;" routerLink="/profile/{{article.id}}" target="_blank">{{article.fullName}} &nbsp;&nbsp;&nbsp;</a>
+             <p *ngIf="!article.status" style="padding: 0px 0px;" routerLink="/profile/{{article.id}}" target="_blank">{{article.fullName}} &nbsp;&nbsp;&nbsp;</p>
+           </div>
           <p class="date">{{a.year}}</p>
           <p style="font-size: 18px">{{a.title}}</p>
           <p class="desc"> {{a.type}}: {{a.name}}</p>
