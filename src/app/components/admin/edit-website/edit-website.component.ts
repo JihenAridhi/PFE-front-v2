@@ -35,12 +35,9 @@ export class EditWebsiteComponent implements OnInit {
       .subscribe(
         data => {
           this.footerData = data.footerData; // Access the "footerData" key
-          console.log('hi');
-          console.log(this.footerData);
           this.isLoading = false; // Set the loading indicator flag to false
         },
         error => {
-          console.error(error);
           this.isLoading = false; // Set the loading indicator flag to false even in case of error
         }
       );
@@ -63,12 +60,9 @@ export class EditWebsiteComponent implements OnInit {
     this.http.post('http://127.0.0.1:8000/api/update-footer', { footerData }, { responseType: 'text' })
       .subscribe(
         response => {
-          console.log('Footer data updated successfully:', response);
-          console.log(this.footerData);
           // Optionally, display a success message to the user
         },
         error => {
-          console.error('Error updating footer data:', error);
           // Optionally, display an error message to the user
         }
       );
@@ -78,12 +72,9 @@ export class EditWebsiteComponent implements OnInit {
       .subscribe(
         data => {
           this.presidentData = data.presidentData;// Access the "footerData" key
-          console.log('hi');
-          console.log(this.presidentData);
           this.isLoading1 = false; // Set the loading indicator flag to false
         },
         error => {
-          console.error(error);
           this.isLoading1 = false; // Set the loading indicator flag to false even in case of error
         }
       );
@@ -99,12 +90,9 @@ export class EditWebsiteComponent implements OnInit {
     this.http.post('http://127.0.0.1:8000/api/update-president', { presidentData }, { responseType: 'text' })
       .subscribe(
         response => {
-          console.log('President data updated successfully:', response);
-          console.log(this.presidentData);
           // Optionally, display a success message to the user
         },
         error => {
-          console.error('Error updating president data:', error);
           // Optionally, display an error message to the user
         }
       );

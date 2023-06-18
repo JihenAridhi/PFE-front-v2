@@ -20,11 +20,9 @@ export class FooterComponent implements OnInit{
       .subscribe(
         data => {
           this.footerData = data.footerData; // Access the "footerData" key
-          console.log(this.footerData);
           this.isLoading = false; // Set the loading indicator flag to false
         },
         error => {
-          console.error(error);
           this.isLoading = false; // Set the loading indicator flag to false even in case of error
         }
       );

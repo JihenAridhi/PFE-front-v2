@@ -57,10 +57,6 @@ export class HomeComponent implements OnInit{
           this.presidentData = data.presidentData; // Access the "footerData" key
           this.firstName= this.presidentData.presidentfirstname;
           this.lastName= this.presidentData.presidentlastname;
-          console.log('hi');
-          console.log(this.presidentData);
-          console.log(this.firstName);
-          console.log(this.lastName);
           this.isLoading = false; // Set the loading indicator flag to false
           const url = `http://localhost:8000/person/getByFullName/${this.firstName}/${this.lastName}`;
 
@@ -72,12 +68,10 @@ export class HomeComponent implements OnInit{
                 // Handle the person data as needed
               },
               error => {
-                console.error('Error fetching person:', error);
               }
             );
         },
         error => {
-          console.error(error);
           this.isLoading = false; // Set the loading indicator flag to false even in case of error
         }
       );

@@ -16,20 +16,20 @@
           <input type="password" name="password" placeholder="  your password ..." ngModel required>
           <label> Confirm your password <span>*</span> </label>
           <input type="password" placeholder="  Confirm your password ..." name="password1" ngModel required>
-          <button class="SBM next-button" (click)="showPart(partB)">next</button>
+          <button class="SBM next-button" *ngIf="addF.valid" (click)="showPart(partB)">next</button>
         </div>
         <div id="partB" #partB style="display: none;">
           <label> Phone <span color="red">*</span> </label>
-          <input type="text" name="phone" placeholder="  your phone ..." ngModel>
+          <input type="text" name="phone" placeholder="  your phone ..." ngModel required>
           <label> Short Bio <span color="red">*</span> </label>
-          <input type="text" name="bio" style="height:100px;" placeholder="  your bio ..." ngModel>
+          <input type="text" name="bio" style="height:100px;" placeholder="  your bio ..." ngModel required>
           <div style="width:160px; height:70px; overflow: hidden;">
             <label>Curriculum vitae <span color="red">*</span> </label>
             <input type="file" name="CV" accept=".pdf" #fileUpload (change)="onFileSelected(fileUpload.files)">
           </div>
           <div style="display: block;">
             <button class="SBM previous-button" type="button"  (click)="showPart(partA)">previous</button>
-            <button class="SBM next-button next" (click)="showPart(partC)">next</button>
+            <button class="SBM next-button next" *ngIf="addF.valid" (click)="showPart(partC)">next</button>
           </div>
         </div>
         <div id="partC" #partC style="display: none;">
@@ -53,7 +53,7 @@
             <input type="text" name="dblp" placeholder="  your DBLP's url ..." ngModel>
           </div>
           <button class="SBM previous-button" type="button" (click)="showPart(partB)">previous</button>
-          <button class="SBM next-button next" (click)="showPart(partD)">next</button>
+          <button class="SBM next-button next" *ngIf="addF.valid" (click)="showPart(partD)">next</button>
         </div>
         <div id="partD" #partD style="display: none;">
           <div class="cont">
@@ -70,9 +70,10 @@
         </div>
         <div id="partE" #partE style="display: none;">
           <label> We have sent you an email,</label>
-          <label> please enter the code </label>
+          <label> Please enter the code </label>
           <input type="password" name="code"  placeholder="  your code ..." ngModel>
           <button class="SBM previous-button" type="button" (click)="showPart(partD)">previous</button>
+          <button class="SBM next-button next" (click)="addPerson(addF)">resend</button>
           <input type="submit" name="" value="submit" (click)="confirm(addF)" class="SBM next">
         </div>
       </form>
