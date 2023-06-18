@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, HostListener} from '@angular/core';
 import {NgForm} from "@angular/forms";
 import {ArticleService} from "../../../services/article.service";
 import {Article} from "../../../entities/Article";
@@ -15,6 +15,8 @@ export class SaveArticleComponent implements OnInit{
   article: Article = new Article()
   searchList: Person[] = []
   filteredList: Person[] = []
+  showDropdown: boolean = false;
+
   constructor(private as: ArticleService, private ps: PersonService, private route: ActivatedRoute) {}
 
   async ngOnInit()  {
@@ -25,7 +27,18 @@ export class SaveArticleComponent implements OnInit{
     this.addAuthor()
     await this.ps.getStatus(true).then(data => {this.searchList = data!/*.filter(r => !this.article.authors!.some(a => a.id === r.id)); console.log(this.searchList)*/})
   }
+    @HostListener('document:click', ['$event'])
+  onClick(event: MouseEvent) {
+    const clickedElement = event.target as HTMLElement;
 
+    // Check if the clicked element is outside the input and the dropdown
+    const isOutsideInput = !clickedElement.closest('input');
+    const isOutsideDropdown = !clickedElement.closest('.dropdown');
+
+    if (isOutsideInput && isOutsideDropdown) {
+      this.showDropdown = false;
+    }
+  }
     addAuthor() {
       if (!this.article.authors)
         this.article.authors = []
@@ -62,7 +75,9 @@ export class SaveArticleComponent implements OnInit{
   {
       this.article.authors![this.article.authors!.length - 1] = person
       this.searchList = this.searchList.filter(r => r!==person)
-    this.filteredList = this.searchList
+      this.filteredList = this.searchList
+      this.showDropdown = false;
+
   }
 
 }
