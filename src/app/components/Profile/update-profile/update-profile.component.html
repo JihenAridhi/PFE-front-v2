@@ -65,10 +65,10 @@
 
 
       <!--<div class="input-box">
-      <input type="text" placeholder="theme" *ngFor="let t of person.themes; let i = index" [(ngModel)]="t.title" name="theme_{{i}}" (input)="searchTheme(i)">
+      <input type="text" placeholder="theme" *ngFor="let t of person.themes; let i = index" [(ngModel)]="t.title" name="theme_{{i}}" (input)="searchTheme(i)" (click)="showDropdown = true">
       <div class="dropdown">
         <ul>
-          <li *ngFor="let theme of filteredList" (click)="selectTheme(theme)" style="list-style: none">
+          <li *ngFor="let theme of filteredList" (click)="selectTheme(theme)" style="list-style: none" *ngIf="showDropdown">
             <span>{{theme.title}}</span>
           </li>
         </ul>
