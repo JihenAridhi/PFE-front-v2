@@ -12,8 +12,8 @@
 
     <div class="input-box">
       <label>Author <span>*</span></label>
-      <input *ngFor="let a of article.authors; let i = index" type="text" placeholder=" Full name" required [(ngModel)]="a.fullName" name="authors_{{i}}" (input)="searchAuthor(i)"/>
-      <div class="dropdown">
+      <input *ngFor="let a of article.authors; let i = index" type="text" placeholder=" Full name" required [(ngModel)]="a.fullName" name="authors_{{i}}" (input)="searchAuthor(i)" (click)="showDropdown = true"/>
+      <div class="dropdown" *ngIf="showDropdown">
       <ul>
         <li *ngFor="let person of filteredList" (click)="selectPerson(person)" style="list-style: none">
           <img [src]="person.photo" alt="Person Photo" style="height: 40px; width: 40px; border-radius: 50%;">
