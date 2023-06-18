@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, HostListener} from '@angular/core';
 import {NgForm} from "@angular/forms";
 import {Person} from "../../../entities/Person";
 import {PersonService} from "../../../services/person.service";
@@ -37,6 +37,18 @@ export class UpdateProfileComponent implements OnInit{
       this.filteredList = this.searchList.filter(theme => !this.person.themes!.includes(theme))
     })
     this.addTheme()
+  }
+    @HostListener('document:click', ['$event'])
+  onClick(event: MouseEvent) {
+    const clickedElement = event.target as HTMLElement;
+
+    // Check if the clicked element is outside the input and the dropdown
+    const isOutsideInput = !clickedElement.closest('input');
+    const isOutsideDropdown = !clickedElement.closest('.dropdown');
+
+    if (isOutsideInput && isOutsideDropdown) {
+      this.showDropdown = false;
+    }
   }
 
    toggle() {
