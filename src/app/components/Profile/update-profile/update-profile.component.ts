@@ -23,6 +23,8 @@ export class UpdateProfileComponent implements OnInit{
   content: any
   searchList: Theme[] = []
   filteredList: Theme[] = []
+  showDropdown: boolean = false;
+
 
   constructor(private ps: PersonService, private as: ArticleService, private router: Router, private ts: ThemeService, private ls: LanguageService) {this.ls.getLanguage().subscribe(data => this.content=data)}
 
@@ -118,6 +120,7 @@ export class UpdateProfileComponent implements OnInit{
     console.log(theme)
     this.searchList = this.searchList.filter(r => r!==theme)
     this.filteredList = this.searchList
+    this.showDropdown = false;
   }
 
   /*selectTheme(e: any) {
