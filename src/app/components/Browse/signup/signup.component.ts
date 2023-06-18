@@ -64,13 +64,7 @@ export class SignupComponent implements OnInit  {
     if (addF.value.password != addF.value.password1)
       alert('Confirm password, please!');
     else {
-      let person: Person = addF.value
-      person.themes = []
-      for(let i=0; i<12; i++)
-        if(this.themes[i])
-          person.themes?.push(this.themeList[i])
-      //person.password = CryptoJS.AES.encrypt(JSON.stringify(person.password), 'key').toString();
-      this.ps.add(person)
+      this.ps.sendEmail(addF.value.email)
       this.showPart(this.parts[4])
 
     }
@@ -83,6 +77,11 @@ export class SignupComponent implements OnInit  {
 
   confirm(addF: NgForm) {
       let verify = addF.value.code
+    let person: Person = addF.value
+    person.themes = []
+    for(let i=0; i<12; i++)
+      if(this.themes[i])
+        person.themes?.push(this.themeList[i])
       this.ps.register(addF.value, verify, this.selectedFiles)
   }
 }

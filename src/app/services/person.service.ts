@@ -25,20 +25,20 @@ export class PersonService {
   public getAll()
   {return this.http.get<Person[]>('http://localhost:8000/person/getAll').toPromise()/*.subscribe(data=> localStorage.setItem('personList', JSON.stringify(data)))*/}
 
-  public add(person: Person)
+  public sendEmail(email: string)
   {
-    this.http.get('http://127.0.0.1:8000/person/getEmail/'+person.email).subscribe(
+    this.http.get('http://127.0.0.1:8000/person/getEmail/'+email).subscribe(
       (data)=>
       {
         if(data)
           alert('this email is already in use !!')
         else {
           this.code = Math.floor(Math.random()*1000000)
-          let email: any = {}
-          email.subject = 'Confirm Your SMARTLAB Account Creation'
-          email.html = `You have requested an account Creation for SMARTLAB. Your confirmation code is `+this.code;
-          email.to = person.email
-          this.http.post('http://localhost:8000/person/sendMail', email).subscribe()
+          let mail: any = {}
+          mail.subject = 'Confirm Your SMARTLAB Account Creation'
+          mail.html = `You have requested an account Creation for SMARTLAB. Your confirmation code is `+this.code;
+          mail.to = email
+          this.http.post('http://localhost:8000/person/sendMail', mail).subscribe()
         }
       }
     )
@@ -92,7 +92,7 @@ export class PersonService {
     //person.password = CryptoJS.AES.encrypt(person.password!, 'key').toString()
     if (!person.themes![person.themes!.length-1].id)
       person.themes?.splice(person.themes?.length-1, 1)
-    this.http.put('http://127.0.0.1:8000/person/update', person).subscribe(()=>alert('your information have been updated successfully !!'))
+    this.http.put('http://127.0.0.1:8000/person/update', person).subscribe()
   }
 
   delete(person: Person)
@@ -135,8 +135,8 @@ export class PersonService {
         for (let i = 0; i < person.themes!.length; i++)
           this.http.post('http://localhost:8000/person/' + id + '/addTheme/' + person.themes![i].id, null).subscribe();
         this.setCV(files, id!)
+        this.router.navigate(['/home']);
       })
-      this.router.navigate(['/home']);
     }
   }
 }

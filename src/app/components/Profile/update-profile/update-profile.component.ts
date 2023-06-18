@@ -8,7 +8,6 @@ import {Router} from "@angular/router";
 import {LanguageService} from "../../../services/language.service";
 import {ThemeService} from "../../../services/theme.service";
 import {Theme} from "../../../entities/Theme";
-import * as CryptoJS from 'crypto-js';
 
 @Component({
   selector: 'app-update-profile',
@@ -24,19 +23,16 @@ export class UpdateProfileComponent implements OnInit{
   content: any
   searchList: Theme[] = []
   filteredList: Theme[] = []
-  themeList: Theme[] = []
 
   constructor(private ps: PersonService, private as: ArticleService, private router: Router, private ts: ThemeService, private ls: LanguageService) {this.ls.getLanguage().subscribe(data => this.content=data)}
 
   async ngOnInit() {
     this.person = this.ps.getItem('person')
-    console.log(this.person)
     this.url = this.person.photo!
     await this.as.getPersonArticles(this.person.id).then(data => {if (data) this.articles = data})
     this.ts.getAllThemes().then(data => {
-      this.themeList = data!
-      this.searchList = data!.filter(theme => !this.person.themes?.includes(theme))
-      this.filteredList = this.searchList
+      this.searchList = data!
+      this.filteredList = this.searchList.filter(theme => !this.person.themes!.includes(theme))
     })
     this.addTheme()
   }
@@ -69,11 +65,11 @@ export class UpdateProfileComponent implements OnInit{
   update() {
     this.ps.update(this.person)
     this.ps.setItem('person', this.person)
+    alert('your information have been updated successfully !!')
   }
 
 
   updatePass(updateP: NgForm) {
-    console.log(this.person.password)
     if(updateP.value.newP != updateP.value.confirmP)
       alert('please confirm your new password')
       else if (this.person.password != updateP.value.oldP)
@@ -81,6 +77,7 @@ export class UpdateProfileComponent implements OnInit{
     else {
       this.person.password = updateP.value.newP
       this.ps.update(this.person)
+      alert('your information have been updated successfully !!')
     }
   }
 
@@ -102,16 +99,30 @@ export class UpdateProfileComponent implements OnInit{
 
   addTheme() {
     this.person.themes?.push(new Theme())
+    this.person.themes![this.person.themes!.length-1].title=''
   }
 
   removeTheme() {
-    this.person.themes?.splice(this.person.themes?.length-1,1)
+    let theme = this.person.themes?.splice(this.person.themes?.length-1,1)
+    if (theme![0].id) {
+      this.searchList.push(theme![0])
+      this.filteredList = this.searchList
+    }
   }
 
   selectTheme(theme: Theme) {
     this.person.themes![this.person.themes!.length - 1] = theme
-    this.searchList = this.searchList.filter(r => r!=theme)
+    console.log(theme)
+    this.searchList = this.searchList.filter(r => r!==theme)
+    this.filteredList = this.searchList
   }
+
+  /*selectTheme(e: any) {
+    let theme: Theme = e.value as Theme
+    console.log(typeof theme)
+    this.person.themes![this.person.themes!.length - 1] = theme
+    this.filteredList = this.searchList.filter(r => r!=theme)
+  }*/
 
   searchTheme(i: number)
   {
@@ -119,4 +130,6 @@ export class UpdateProfileComponent implements OnInit{
       this.filteredList = []
     this.filteredList = this.searchList.filter(theme => theme.title?.toUpperCase().includes(this.person.themes![i].title!.toUpperCase()))
   }
+
+
 }

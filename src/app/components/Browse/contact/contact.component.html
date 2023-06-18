@@ -1,23 +1,23 @@
 <div id="container">
   <div id="feedback">
-    <form>
+    <form #contactF='ngForm' (ngSubmit)="add(contactF)">
       <h1>Contact us</h1>
       <div class="separation"></div>
       <div class="corps-formulaire">
         <div class="gauche">
           <div class="groupe">
             <label>Your first name</label>
-            <input type="text" autocomplete="off" />
+            <input type="text" autocomplete="off" ngModel name="name"/>
             <i class="fas fa-user"></i>
           </div>
           <div class="groupe">
             <label>Your e-mail</label>
-            <input type="text" autocomplete="off" />
+            <input type="text" autocomplete="off" ngModel name="email"/>
             <i class="fas fa-envelope"></i>
           </div>
           <div class="groupe">
             <label>Your phone number</label>
-            <input type="text" autocomplete="off" />
+            <input type="text" autocomplete="off" ngModel name="phone"/>
             <i class="fas fa-mobile"></i>
           </div>
         </div>
@@ -25,14 +25,12 @@
         <div class="droite">
           <div class="groupe">
             <label>Message</label>
-            <textarea placeholder="Tape here..."></textarea>
+            <textarea placeholder="Tape here..." ngModel name="message"></textarea>
           </div>
         </div>
       </div>
 
-      <div class="pied-formulaire" align="center">
-        <button>Send the message</button>
-      </div>
+      <input type="submit" class="button" value="Send">
     </form>
   </div>
   <div id="info">

@@ -16,10 +16,13 @@ export class PartnersService {
 
   setPhoto(files: any, id: number)
   {
-    const file: File = files[0];
-    const formData = new FormData();
-    formData.append('file', file, id.toString()+'.jpg');
-    this.http.post<string>('http://localhost:8000/photo/partner', formData).toPromise().then()
+    if (files)
+    {
+      const file: File = files[0];
+      const formData = new FormData();
+      formData.append('file', file, id.toString() + '.jpg');
+      this.http.post<string>('http://localhost:8000/photo/partner', formData).toPromise().then()
+    }
   }
 
   save(partner: Partner, files: any)

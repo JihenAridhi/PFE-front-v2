@@ -34,7 +34,10 @@ export class SaveArticleComponent implements OnInit{
 
     removeAuthor() {
       let person = this.article.authors!.splice(this.article.authors!.length - 1, 1)
-      this.searchList.push(person[0])
+      if (person[0].id) {
+        this.searchList.push(person[0])
+        this.filteredList = this.searchList
+      }
     }
 
   save(addF: NgForm)
@@ -59,6 +62,7 @@ export class SaveArticleComponent implements OnInit{
   {
       this.article.authors![this.article.authors!.length - 1] = person
       this.searchList = this.searchList.filter(r => r!==person)
+    this.filteredList = this.searchList
   }
 
 }

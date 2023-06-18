@@ -69,7 +69,6 @@ export class HomeComponent implements OnInit{
             .subscribe(
               personData => {
                 this.person = personData;
-                console.log('Person Data:', personData);
                 // Handle the person data as needed
               },
               error => {

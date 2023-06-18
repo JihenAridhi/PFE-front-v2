@@ -48,6 +48,23 @@
         <input type="text" name="linkedin" placeholder="  your Linkedin's url ..." [(ngModel)]="person.linkedin">
         <input type="text" name="DBLP" placeholder="  your DBLP's url ..." [(ngModel)]="person.dblp">
         <label> Themes  </label>
+
+      <div *ngFor="let t of person.themes; let i = index">
+        <input type="text" list="themeList" [value]="t.title" >
+        <datalist id="themeList">
+            <option *ngFor="let theme of filteredList" (click)="selectTheme(theme)" [ngValue]="theme">{{theme.title}}</option>
+        </datalist>
+      </div>
+
+      <!--<div *ngFor="let t of person.themes; let i = index">
+        <select id="themeList">
+          <option value=""></option>
+          <option *ngFor="let theme of filteredList" (select)="selectTheme(theme)" [selected]="t.title==theme.title" [ngValue]="theme">{{theme.title}}</option>
+        </select>
+      </div>-->
+
+
+      <!--<div class="input-box">
       <input type="text" placeholder="theme" *ngFor="let t of person.themes; let i = index" [(ngModel)]="t.title" name="theme_{{i}}" (input)="searchTheme(i)">
       <div class="dropdown">
         <ul>
@@ -56,9 +73,10 @@
           </li>
         </ul>
       </div>
+      </div>-->
       <div class="controls">
-        <a id="add_more_fields" (click)="addTheme()"><i class="fa fa-plus" ></i>Add More</a>
-        <a id="remove_fields" (click)="removeTheme()"><i class="fa fa-minus"></i>Remove Field</a>
+        <a id="add_more_fields" (click)="addTheme()"><i class="fa fa-plus" ></i>Add Theme</a>
+        <a id="remove_fields" (click)="removeTheme()"><i class="fa fa-minus"></i>Remove Theme</a>
       </div>
 
         <input type="submit" name="" value="{{content.update}}" class="SBM">

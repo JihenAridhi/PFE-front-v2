@@ -44,6 +44,7 @@ import { EditProjectComponent } from './components/Projects/edit-project/edit-pr
 import { ReportingComponent } from './components/admin/reporting/reporting.component';
 import { AboutComponent } from './components/Browse/about/about.component';
 import { EditWebsiteComponent } from './components/admin/edit-website/edit-website.component';
+import {NgbDropdown} from "@ng-bootstrap/ng-bootstrap";
 
 
 
@@ -96,7 +97,8 @@ import { EditWebsiteComponent } from './components/admin/edit-website/edit-websi
     AppRoutingModule,
     RouterModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgbDropdown
   ],
   providers: [],
   bootstrap: [AppComponent]

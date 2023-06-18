@@ -29,16 +29,6 @@
       </div>
     </div>
 
-    <!--<div class="input-box">
-      <label>File</label>
-      <input type="file"  #fileUpload (change)="onFileSelected(fileUpload.files)" >
-    </div>
-
-    <div class="input-box">
-      <label>URL of article <span>*</span></label>
-      <input type="text" placeholder=" Url of article" [(ngModel)]="article.url" name="url"  />
-    </div>-->
-
     <label>Type <span>*</span></label>
     <div class="select-box">
       <select name="type" [(ngModel)]="article.type" required>
@@ -76,12 +66,12 @@
 
     <div class="input-box" *ngIf="addF.value.type=='Journal'">
       <label>Volume <span>*</span></label>
-      <input type="text" placeholder=" Volume" [(ngModel)]="article.volume" name="month" required />
+      <input type="text" placeholder=" Volume" [(ngModel)]="article.volume" name="volume" required />
     </div>
 
     <div class="input-box" *ngIf="addF.value.type=='Journal'">
       <label>Numero <span>*</span></label>
-      <input type="text" placeholder=" Numero" [(ngModel)]="article.numero" name="month" required />
+      <input type="text" placeholder=" Numero" [(ngModel)]="article.numero" name="numero" required />
     </div>
 
     <div class="column" *ngIf="addF.value.type=='Journal'">

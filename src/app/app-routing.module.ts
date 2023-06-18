@@ -37,6 +37,7 @@ import {ResearchAxisComponent} from "./components/Browse/research-axis/research-
 import {EditProjectComponent} from "./components/Projects/edit-project/edit-project.component";
 import {ReportingComponent} from "./components/admin/reporting/reporting.component";
 import {EditWebsiteComponent} from "./components/admin/edit-website/edit-website.component";
+import {AboutComponent} from "./components/Browse/about/about.component";
 
 
 
@@ -65,7 +66,8 @@ const routes: Routes = [
       {path: 'profile/:id', component: ProfileComponent},
       {path: 'list-project', component: ListProjectComponent},
       {path: 'view-project', component: ViewProjectComponent},
-      {path: 'research-axis', component: ResearchAxisComponent}
+      {path: 'research-axis', component: ResearchAxisComponent},
+      {path: 'about', component: AboutComponent}
     ]}
   ]},
   {path: 'login', component: LoginComponent},
