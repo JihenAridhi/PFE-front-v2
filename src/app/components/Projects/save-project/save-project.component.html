@@ -18,6 +18,19 @@
         <label>type</label>
         <input type="text" placeholder="Type of project ..." required [(ngModel)]="project.type" name="type"/>
       </div>
+      <label> Partners  </label>
+      <input type="text" placeholder="Partners" *ngFor="let t of project.partners; let i = index" [(ngModel)]="t.name" name="partner_{{i}}" (input)="searchPartner(i)" (click)="showDropdown = true" >
+      <div class="dropdown" id="themeDropdown"  *ngIf="showDropdown">
+        <ul>
+          <li *ngFor="let partner of filteredList" (click)="selectPartner(partner)" style="list-style: none">
+            <span>{{partner.name}}</span>
+          </li>
+        </ul>
+      </div>
+      <div class="controls">
+        <a id="add_more_fields" (click)="addPartner()"><i class="fa fa-plus" ></i>Add More</a>
+        <a id="remove_fields" (click)="removePartner()"><i class="fa fa-minus"></i>Remove Field</a>
+      </div>
 
       <div class="input-box">
         <label>Image</label>
