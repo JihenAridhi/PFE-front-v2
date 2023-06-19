@@ -20,7 +20,7 @@
 </div>
 
 <section class="projects">
-  <a class="project" *ngFor="let p of projectList" routerLink="" target="_blank">
+  <a class="project" *ngFor="let p of filteredList" routerLink="/view-project/{{p.id}}" target="_blank">
     <div class="left">
       <img [src]="p.photo" alt="">
     </div>
