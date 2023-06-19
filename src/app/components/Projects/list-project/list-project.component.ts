@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Project} from "../../../entities/Project";
 import {LanguageService} from "../../../services/language.service";
 import {Event} from "../../../entities/Event";
+import {ProjectService} from "../../../services/project.service";
 
 @Component({
   selector: 'app-list-project',
@@ -15,8 +16,15 @@ export class ListProjectComponent implements OnInit{
   filteredList: Project[] = []
   recentValue: any;
   olderValue = new Date().toISOString().substring(0, 10);
-  constructor(private ls: LanguageService) {ls.getLanguage().subscribe(data => this.content=data)}
-  ngOnInit(): void {
+  constructor(private ls: LanguageService, private pr: ProjectService) {ls.getLanguage().subscribe(data => this.content=data)}
+  async ngOnInit()
+  {
+    await this.pr.getAll().then( async data =>
+    {
+      if (data)
+        this.projectList = data
+      this.onSearchTextEntered('')
+    })
   }
 
   onSearchTextEntered(searchText: string) {
