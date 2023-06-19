@@ -75,14 +75,14 @@
     <div class="box">
       <div class="b1">
         <h3 > {{eventList[0].title}} </h3>
-        <p> {{eventList[0].description}}</p>
+        <p> {{eventList[0].date | date: 'dd-MM-yyyy'}}</p>
         <a routerLink="/view-event/{{eventList[0].id}}" target="_blank" class="btn"> {{content.seeMore}} > </a>
       </div>
     </div>
     <div class="box" id="blue">
       <div class="b2">
         <h3>{{eventList[1].title}}</h3>
-        <p> {{eventList[1].description}}</p>
+        <p> {{eventList[1].date | date: 'dd-MM-yyyy'}}</p>
         <a routerLink="/view-event/{{eventList[1].id}}" target="_blank" class="btn"> {{content.seeMore}} > </a>
       </div>
     </div>

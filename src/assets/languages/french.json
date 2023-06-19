@@ -22,8 +22,7 @@
   "date": "Date",
   "location": "Emplacement",
   "organiser": "Organisateur",
-  "firstName": "Prénom",
-  "lastName": "Nom",
+  "fullName": "Nom et Prenom",
   "email": "Email",
   "phone": "Téléphone",
   "message": "Message",
@@ -56,5 +55,8 @@
   "searchByName": "Recherche par Nom",
   "searchByYear": "Recherche par Année",
   "project": "Projet",
-  "about": "à propos"
+  "about": "à propos",
+  "next": "Suivant",
+  "previous": "Precedant",
+  "mandatory": "Champs Obligatoire"
 }

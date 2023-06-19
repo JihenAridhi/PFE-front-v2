@@ -16,7 +16,7 @@
       <div class="dropdown" *ngIf="showDropdown">
       <ul>
         <li *ngFor="let person of filteredList" (click)="selectPerson(person)" style="list-style: none">
-          <img [src]="person.photo" alt="Person Photo" style="height: 40px; width: 40px; border-radius: 50%;">
+          <img [src]="person.photo" alt="Photo" style="height: 40px; width: 40px; border-radius: 50%;">
           <span>{{person.fullName}}</span>
         </li>
       </ul>

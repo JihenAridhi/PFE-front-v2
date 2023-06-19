@@ -12,8 +12,8 @@
       <tr *ngFor="let p of partnerList; let i = index;">
         <td><a href="{{p.urlPage}}" target="_blank">{{p.name}}</a></td>
         <td>{{p.type}}</td>
-        <td><a class="btn2" (click)="delete(p)">{{content.delete}}</a></td>
         <td><a class="btn2" routerLink="/account/save-partner/{{p.id}}" target="_blank">{{content.update}}</a></td>
+        <td><a class="btn2" (click)="delete(p)">{{content.delete}}</a></td>
       </tr>
       </tbody>
     </table>

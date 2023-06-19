@@ -92,6 +92,7 @@ const routes: Routes = [
     {path: 'save-partner', component: SavePartnerComponent},
     {path: 'save-partner/:id', component: SavePartnerComponent},
     {path: 'save-project/:id', component: SaveProjectComponent},
+    {path: 'save-project', component: SaveProjectComponent},
     {path: 'edit-projects', component: EditProjectComponent},
     {path: 'edit-website', component: EditWebsiteComponent},
     {path: 'reporting', component: ReportingComponent}

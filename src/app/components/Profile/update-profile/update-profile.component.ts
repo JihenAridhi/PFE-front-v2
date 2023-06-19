@@ -33,8 +33,8 @@ export class UpdateProfileComponent implements OnInit{
     this.url = this.person.photo!
     await this.as.getPersonArticles(this.person.id).then(data => {if (data) this.articles = data})
     this.ts.getAllThemes().then(data => {
-      this.searchList = data!
-      this.filteredList = this.searchList.filter(theme => !this.person.themes!.includes(theme))
+      this.searchList = data!.filter(theme => !this.person.themes!.some(t => t.id === theme.id))
+      this.filteredList = this.searchList
     })
     this.addTheme()
   }
@@ -87,9 +87,9 @@ export class UpdateProfileComponent implements OnInit{
     if (updateP.value.newP.length < 8 || !/\d/.test(updateP.value.newP) || !/[a-zA-Z]/.test(updateP.value.newP)) {
       alert('Please enter a new password that is at least 8 characters long and contains both letters and numbers.');
     }
-    if(updateP.value.newP != updateP.value.confirmP)
+    else if(updateP.value.newP != updateP.value.confirmP)
       alert('please confirm your new password')
-      else if (this.person.password != updateP.value.oldP)
+    else if (this.person.password != updateP.value.oldP)
         alert("incorrect password")
     else {
       this.person.password = updateP.value.newP
@@ -130,17 +130,9 @@ export class UpdateProfileComponent implements OnInit{
   selectTheme(theme: Theme) {
     this.person.themes![this.person.themes!.length - 1] = theme
     console.log(theme)
-    this.searchList = this.searchList.filter(r => r!==theme)
-    this.filteredList = this.searchList
+    this.filteredList = this.searchList.filter(r => r!==theme)
     this.showDropdown = false;
   }
-
-  /*selectTheme(e: any) {
-    let theme: Theme = e.value as Theme
-    console.log(typeof theme)
-    this.person.themes![this.person.themes!.length - 1] = theme
-    this.filteredList = this.searchList.filter(r => r!=theme)
-  }*/
 
   searchTheme(i: number)
   {

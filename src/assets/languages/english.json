@@ -22,8 +22,7 @@
   "date": "Date",
   "location": "Location",
   "organiser": "Organiser",
-  "firstName": "First Name",
-  "lastName": "Last Name",
+  "fullName": "Full Name",
   "email": "Email",
   "phone": "Phone",
   "message": "Message",
@@ -56,5 +55,8 @@
   "searchByName": "Search by Name",
   "searchByYear": "Search by Year",
   "project": "Project",
-  "about": "About"
+  "about": "About",
+  "next": "Next",
+  "previous": "Previous",
+  "mandatory": "Mandatory Field"
 }

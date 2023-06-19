@@ -49,8 +49,8 @@ export class MembersComponent implements OnInit{
       this.members[i].team=f['team_'+i]
       this.ps.update(this.members[i])
       this.ps.setItem('personList', this.members)
-      let a = [f['1_'+i], f['2_'+i], f['3_'+i], f['4_'+i], f['5_'+i], f['6_'+i], f['7_'+i]]
-      for(let j=0; j<7; j++)
+      let a = [f['1_'+i], f['2_'+i], f['3_'+i], f['4_'+i], f['5_'+i], f['6_'+i], f['7_'+i], f['8_'+i]]
+      for(let j=0; j<8; j++)
       {
         if (a[j] && !this.autoList[this.members[i].id!].includes(j+1)) {
           this.as.addAutorisation(this.members[i].id, j + 1)

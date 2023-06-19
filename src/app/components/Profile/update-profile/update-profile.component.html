@@ -32,15 +32,15 @@
 </div>
 <div id="popup1" >
   <div class="cont unput-box" >
-    <form #updateF='ngForm' (ngSubmit)="update()">
+    <form #updateF='ngForm' (ngSubmit)="update()" ngNativeValidate>
         <label> {{content.firstName}} </label>
-        <input type="text" name="fullName" placeholder="  your first name ..." [(ngModel)]="person.fullName">
+        <input type="text" name="fullName" placeholder="  your first name ..." [(ngModel)]="person.fullName" required>
         <label> Email </label>
-        <input type="email" name="email" placeholder="  add your e-mail ..." [(ngModel)]="person.email">
+        <input type="email" name="email" placeholder="  add your e-mail ..." [(ngModel)]="person.email" required>
         <label> Phone </label>
-        <input type="number" name="phone" placeholder="  add your phone ..." [(ngModel)]="person.phone">
+        <input type="number" name="phone" placeholder="  add your phone ..." [(ngModel)]="person.phone" required>
         <label> Short Bio </label>
-        <input type="text" name="bio" placeholder="  add your Bio ..." [(ngModel)]="person.bio">
+        <input type="text" name="bio" placeholder="  add your Bio ..." [(ngModel)]="person.bio" required>
         <label> Social media  </label>
         <input type="text" name="ResearchGate" placeholder="  your ResearchGate's url ..." [(ngModel)]="person.researchGate">
         <input type="text" name="ORCID" placeholder="  your ORCID's url ..." [(ngModel)]="person.orcid">

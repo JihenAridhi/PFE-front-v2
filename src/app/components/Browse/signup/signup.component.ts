@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {AfterViewInit, Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {NgForm} from "@angular/forms";
 import {PersonService} from "../../../services/person.service";
 import {LanguageService} from "../../../services/language.service";
@@ -11,30 +11,35 @@ import {Person} from "../../../entities/Person";
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.css']
 })
-export class SignupComponent implements OnInit  {
+export class SignupComponent implements OnInit, AfterViewInit {
+@ViewChild('partA') partA!: ElementRef;
+@ViewChild('partB') partB!: ElementRef;
+@ViewChild('partC') partC!: ElementRef;
+@ViewChild('partD') partD!: ElementRef;
+@ViewChild('partE') partE!: ElementRef;
   content: any
   themes: boolean[] = [false, false, false, false, false, false, false, false, false, false, false, false]
   themeList: Theme[] = []
-  parts: HTMLElement[] = []
   selectedFiles: any;
+  parts: HTMLElement[] = []
   constructor(private ps: PersonService, private ls: LanguageService, private ts: ThemeService) {ls.getLanguage().subscribe(data => this.content=data)}
 
-  ngOnInit() {
-    this.ts.getAllThemes().then((data)=>this.themeList=data!)
-    // Wait for the DOM to load before executing code
-    document.addEventListener('DOMContentLoaded', () => {
-      // Get the divs
-      this.parts.push(document.getElementById('partA')!);
-      this.parts.push(document.getElementById('partB')!);
-      this.parts.push(document.getElementById('partC')!);
-      this.parts.push(document.getElementById('partD')!);
-      this.parts.push(document.getElementById('partE')!);
-    });
-    this.showPart(this.parts[0])
+  ngOnInit() {this.ts.getAllThemes().then((data)=>this.themeList=data!)}
+
+  ngAfterViewInit() {
+    // Get the divs
+    this.parts.push(this.partA.nativeElement);
+    this.parts.push(this.partB.nativeElement);
+    this.parts.push(this.partC.nativeElement);
+    this.parts.push(this.partD.nativeElement);
+    this.parts.push(this.partE.nativeElement);
+
+    this.showPart(this.parts[0]);
   }
 
   // Function to show a specific part and hide others
   showPart(partToShow: HTMLElement){
+    console.log(partToShow.id)
     this.parts.forEach(part => {
       if (part === partToShow) {
         part.style.display = 'block'; // Type assertion
@@ -45,6 +50,7 @@ export class SignupComponent implements OnInit  {
   };
 
  addPerson(addF: NgForm) {
+   console.log(addF.value)
     const password = addF.value.password;
 
     // Check password length
@@ -84,4 +90,5 @@ export class SignupComponent implements OnInit  {
         person.themes?.push(this.themeList[i])
       this.ps.register(addF.value, verify, this.selectedFiles)
   }
+
 }

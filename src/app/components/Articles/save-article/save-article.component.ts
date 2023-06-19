@@ -21,13 +21,16 @@ export class SaveArticleComponent implements OnInit{
 
   async ngOnInit()  {
     const id = parseInt(this.route.snapshot.paramMap.get('id')!);
-    if (id) {
+    if (id)
       await this.as.get(id).then(data => this.article = data!)
-    }
     this.addAuthor()
-    await this.ps.getStatus(true).then(data => {this.searchList = data!/*.filter(r => !this.article.authors!.some(a => a.id === r.id)); console.log(this.searchList)*/})
+    await this.ps.getStatus(true).then(data =>
+    {
+      this.searchList = data!.filter(person => !this.article.authors?.some(author => author.id === person.id))
+      this.filteredList = this.searchList
+    })
   }
-    @HostListener('document:click', ['$event'])
+  @HostListener('document:click', ['$event'])
   onClick(event: MouseEvent) {
     const clickedElement = event.target as HTMLElement;
 
@@ -47,7 +50,7 @@ export class SaveArticleComponent implements OnInit{
 
     removeAuthor() {
       let person = this.article.authors!.splice(this.article.authors!.length - 1, 1)
-      if (person[0].id) {
+      if (person[0].id && !person[0].coAuthor) {
         this.searchList.push(person[0])
         this.filteredList = this.searchList
       }

@@ -5,7 +5,6 @@
   <thead>
   <tr>
     <th>{{content.title}}</th>
-    <th>Description</th>
     <th>Date</th>
     <th>Type</th>
     <th colspan="2"><a  routerLink="/account/save-project" target="_blank" class="btn2">{{content.add}} {{content.project}}s</a></th>
@@ -15,7 +14,6 @@
   <tbody>
   <tr *ngFor="let p of projectList">
     <td class="ps">{{p.title}}</td>
-    <td class="ps">{{p.description}}</td>
     <td class="ps">{{p.type}}</td>
     <td class="ps">{{p.date | date: 'dd-MM-yyyy'}}</td>
     <td class="ps"><a routerLink="/account/save-project/{{p.id}}" target="_blank" class="btn2">{{content.update}}</a></td>

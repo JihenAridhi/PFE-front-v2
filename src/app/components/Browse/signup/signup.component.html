@@ -5,55 +5,51 @@
       <h1>General Information</h1>
       <form #addF='ngForm' ngNativeValidate>
         <div id="partA" #partA>
-          <label class="ps"> champ obligatoire * </label>
-          <label> Full Name <span>*</span> </label>
-          <input type="text" name="fullName" placeholder="  your full name ..." ngModel required>
-          <label> email <span>*</span> </label>
+          <label class="ps"> {{content.mandatory}} * </label>
+          <label> {{content.fullName}} <span>*</span> </label>
+          <input type="text" name="fullName" placeholder="  your full name ..." ngModel required valid>
+          <label> Email <span>*</span> </label>
           <input type="email" name="email" placeholder="  your e-mail ..." ngModel required>
-          <label> Password  <span>*</span> </label>
+          <label> {{content.password}}  <span>*</span> </label>
           <label style="font-size: 10px; margin-top:0;"> Password must contain letter and numbers </label>
           <label style="font-size: 10px; margin-top:0;"> Password must be loger than 8 caracters </label>
           <input type="password" name="password" placeholder="  your password ..." ngModel required>
-          <label> Confirm your password <span>*</span> </label>
+          <label> {{content.confirmP}} <span>*</span> </label>
           <input type="password" placeholder="  Confirm your password ..." name="password1" ngModel required>
-          <button class="SBM next-button" *ngIf="addF.valid" (click)="showPart(partB)">next</button>
+          <button class="SBM next-button" type="button" (click)="showPart(partB)" [disabled]="addF.invalid">{{content.next}}</button>
         </div>
         <div id="partB" #partB style="display: none;">
-          <label> Phone <span color="red">*</span> </label>
-          <input type="text" name="phone" placeholder="  your phone ..." ngModel required>
-          <label> Short Bio <span color="red">*</span> </label>
-          <input type="text" name="bio" style="height:100px;" placeholder="  your bio ..." ngModel required>
+          <label> {{content.phone}}</label>
+          <input type="text" name="phone" placeholder="  your phone ..." ngModel>
+          <label> Short Bio</label>
+          <input type="text" name="bio" style="height:100px;" placeholder="  your bio ..." ngModel>
           <div style="width:160px; height:70px; overflow: hidden;">
-            <label>Curriculum vitae <span color="red">*</span> </label>
+            <label>CV</label>
             <input type="file" name="CV" accept=".pdf" #fileUpload (change)="onFileSelected(fileUpload.files)">
           </div>
           <div style="display: block;">
-            <button class="SBM previous-button" type="button"  (click)="showPart(partA)">previous</button>
-            <button class="SBM next-button next" *ngIf="addF.valid" (click)="showPart(partC)">next</button>
+            <button class="SBM previous-button" type="button"  (click)="showPart(partA)">{{content.previous}}</button>
+            <button class="SBM next-button next" type="button" (click)="showPart(partC)">{{content.next}}</button>
           </div>
         </div>
         <div id="partC" #partC style="display: none;">
           <div style="display:flex; width:260px; height:35px;">
-            <i class='fab fa-researchgate' style='font-size:20px;color:rgb(30, 48, 80);'></i> &nbsp;&nbsp;&nbsp;
             <input type="text" name="researchGate" placeholder="  your ResearchGate's url ..." ngModel>
           </div>
           <div style="display:flex; width:260px; height:35px;">
-            <i class='fab fa-orcid' style='font-size:20px;color:rgb(30, 48, 80);'></i> &nbsp;&nbsp;&nbsp;
             <input type="text" name="orcid" placeholder="  your ORCID's url ..." ngModel>
           </div>
           <div style="display:flex; width:260px; height:35px;">
-            <i class="fa-brands fa-google" style='font-size:20px;color:rgb(30, 48, 80);'></i> &nbsp;&nbsp;&nbsp;
             <input type="text" name="scholar" placeholder="  your Google scholar's url ..." ngModel>
           </div>
           <div style="display:flex; width:260px; height:35px;">
-            <i class="fa fa-linkedin-square" style='font-size:20px;color:rgb(30, 48, 80);'></i> &nbsp;&nbsp;&nbsp;
             <input type="text" name="linkedin" placeholder="  your Linkedin's url ..." ngModel>
           </div>
           <div style="display:flex; width:260px; height:35px;">
             <input type="text" name="dblp" placeholder="  your DBLP's url ..." ngModel>
           </div>
           <button class="SBM previous-button" type="button" (click)="showPart(partB)">previous</button>
-          <button class="SBM next-button next" *ngIf="addF.valid" (click)="showPart(partD)">next</button>
+          <button class="SBM next-button next" type="button" (click)="showPart(partD)">next</button>
         </div>
         <div id="partD" #partD style="display: none;">
           <div class="cont">
@@ -65,16 +61,16 @@
               </div>
             </label>
           </div>
-         <button class="SBM previous-button" type="button" (click)="showPart(partC)">previous</button>
-          <button class="SBM next-button next" (click)="addPerson(addF)">next</button>
+          <button class="SBM previous-button" type="button" (click)="showPart(partC)">previous</button>
+          <button class="SBM next-button next" type="button" (click)="addPerson(addF)">next</button>
         </div>
         <div id="partE" #partE style="display: none;">
           <label> We have sent you an email,</label>
           <label> Please enter the code </label>
           <input type="password" name="code"  placeholder="  your code ..." ngModel>
           <button class="SBM previous-button" type="button" (click)="showPart(partD)">previous</button>
-          <button class="SBM next-button next" (click)="addPerson(addF)">resend</button>
-          <input type="submit" name="" value="submit" (click)="confirm(addF)" class="SBM next">
+          <button class="SBM next-button next" type="button" (click)="addPerson(addF)">resend</button>
+          <input type="button" value="submit" (click)="confirm(addF)" class="SBM next">
         </div>
       </form>
     </div>
