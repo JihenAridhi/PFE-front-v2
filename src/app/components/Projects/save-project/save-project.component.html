@@ -11,7 +11,12 @@
 
       <div class="input-box">
         <label>Date</label>
-        <input type="date" id="date" required [(ngModel)]="date"  name="date"/>
+        <input type="date" id="date" required [(ngModel)]="project.date"  name="date"/>
+      </div>
+
+      <div class="input-box">
+        <label>type</label>
+        <input type="text" placeholder="Type of project ..." required [(ngModel)]="project.type" name="type"/>
       </div>
 
       <div class="input-box">
