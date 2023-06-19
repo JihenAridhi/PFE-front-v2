@@ -65,7 +65,7 @@ const routes: Routes = [
       {path: 'contact', component: ContactComponent},
       {path: 'profile/:id', component: ProfileComponent},
       {path: 'list-project', component: ListProjectComponent},
-      {path: 'view-project', component: ViewProjectComponent},
+      {path: 'view-project/:id', component: ViewProjectComponent},
       {path: 'research-axis', component: ResearchAxisComponent},
       {path: 'about', component: AboutComponent}
     ]}
@@ -91,7 +91,7 @@ const routes: Routes = [
     {path: 'edit-partners', component: EditPartnersComponent},
     {path: 'save-partner', component: SavePartnerComponent},
     {path: 'save-partner/:id', component: SavePartnerComponent},
-    {path: 'save-project', component: SaveProjectComponent},
+    {path: 'save-project/:id', component: SaveProjectComponent},
     {path: 'edit-projects', component: EditProjectComponent},
     {path: 'edit-website', component: EditWebsiteComponent},
     {path: 'reporting', component: ReportingComponent}
