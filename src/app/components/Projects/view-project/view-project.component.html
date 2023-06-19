@@ -4,8 +4,8 @@
       <img [src]="project.photo">
       <div class="txt">
         <h1>{{project.title}}</h1>
-        <p>{{project.date}}</p>
-        <p>{{project.type}}/{{project.location}}</p>
+        <p>{{project.date | date: 'dd-MM-yyyy'}}</p>
+        <p>{{project.type}}</p>
         <p>{{project.description}}</p>
       </div>
     </div>
