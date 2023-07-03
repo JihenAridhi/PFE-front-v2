@@ -1,3 +1,5 @@
+import {Partner} from "./Partner";
+
 export class Project
 {
   id?: number
@@ -6,4 +8,5 @@ export class Project
   description?: string
   photo?: string
   date?: Date;
+  partners?: Partner[]
 }
