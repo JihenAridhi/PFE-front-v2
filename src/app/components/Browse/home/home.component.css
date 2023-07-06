@@ -8,10 +8,7 @@
   height: 500px;
   text-align: center;
   z-index: 3;
-  background: #123C60;
-  background-image:url("https://static.vecteezy.com/system/resources/previews/003/497/193/original/internet-cyber-security-connection-concept-background-free-vector.jpg");
-  background-repeat: no-repeat;
-  background-attachment: fixed;
+  background: #123C60 url("https://static.vecteezy.com/system/resources/previews/003/497/193/original/internet-cyber-security-connection-concept-background-free-vector.jpg") no-repeat fixed;
   background-size:cover;
 }
 
@@ -33,12 +30,7 @@
   color : #0D89BF ;
 }
 
-.container #P{
-  padding-bottom: 70px ;
-  color : #fff ;
-  font-family: Helvetica;
-  font-size : 20px;
-}
+
 @media screen and (max-width: 1250px){
   .container{
     position: relative;
@@ -46,15 +38,12 @@
   }
 }
 
-
-
 .wrapper{
   position: relative;
   width: 100%;
   height: 150px;
   padding-bottom: 10px;
 }
-
 
 .login {
   position: absolute;
@@ -66,7 +55,6 @@
   top :5px; right: 60px;
   color: #000;
 }
-
 
 .wrapper nav{
   position: relative;
@@ -214,7 +202,6 @@ nav .content .links{
   top: 0;
 }
 
-
 /* Responsive code start */
 @media screen and (max-width: 1250px){
   .wrapper nav{
@@ -327,12 +314,10 @@ nav .content .links{
   }
 }
 
-
 .top{
   display: flex;
   width: 100%;
   height: 40px;
-
 }
 .top a {
   color: #000;
@@ -365,12 +350,10 @@ nav .content .links{
   position:relative;
   top:-100px;
   margin: 10px auto;
-  padding: 0 10%;
-  padding-bottom:10px;
+  padding: 0 10% 10px;
   z-index: 10;
   align-items: center;
 }
-
 .continer {
   display : grid ;
   gap:15px;
@@ -590,17 +573,14 @@ nav .content .links{
 
 a{text-decoration: none; color: white;}
 
-
 /*MOBILE*/
 @media screen and (min-width: 280px) and (max-width: 767px)
 {
   #counts {grid-template-columns: repeat(2,1fr);}
-
   .slider img {
     margin-left: 100px;
   }
 }
-
 .slider {
   margin: auto;
   overflow: hidden;

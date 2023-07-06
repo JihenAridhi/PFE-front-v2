@@ -28,9 +28,8 @@ section {
   width: 100%;
   height: 500px;
   border-radius: 5px;
-  box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 25px, rgba(0, 0, 0, 0.05) 0px 5px 10px;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 25px, rgba(0, 0, 0, 0.05) 0 5px 10px;
   background-color: #123C60;
-  /*background-image: url("https://i.pinimg.com/564x/81/35/83/813583ee37caa50611259d100367f94e.jpg");*/
   background-size: cover;
   background-repeat: no-repeat;
 }
@@ -113,8 +112,7 @@ span {
   position: relative;
   width: 130px;
   height: 55px;
-  margin: 10px;
-  margin-bottom: 2px;
+  margin: 10px 10px 2px;
 }
 
 .cont .option_item .checkbox {
@@ -214,18 +212,6 @@ span {
   width: 40%;
   text-align: center;
   display: flex;
-}
-input[type=file]::file-selector-button {
-  color: #000;
-  width: 160px;
-  height: 30px;
-  border: 0.5px solid #EEEEEE;
-  border-right: 1px solid #e5e5e5;
-  padding: 10px 15px;
-  margin-right: 20px;
-  transition: .5s;
-  border-radius: 5px;
-  box-shadow: rgba(50, 50, 105, 0.15) 0px 2px 5px 0px, rgba(0, 0, 0, 0.05) 0px 1px 1px 0px;
 }
 
 input[type=file]::file-selector-button:hover {
