@@ -90,7 +90,7 @@ export class PersonService {
   update(person: Person)
   {
     //person.password = CryptoJS.AES.encrypt(person.password!, 'key').toString()
-    if (!person.themes![person.themes!.length-1].id)
+    if (person.themes?.length!=0 &&!person.themes![person.themes!.length-1].id)
       person.themes?.splice(person.themes?.length-1, 1)
     this.http.put('http://127.0.0.1:8000/person/update', person).subscribe()
   }
